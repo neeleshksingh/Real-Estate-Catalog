@@ -1,0 +1,79 @@
+.container{
+    border: 1px solid black;
+    padding: 20px;
+}
+form{
+    border: 1px solid black;
+}
+.form{
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 60px;
+    height: 656px;
+    padding: 61px;
+}
+.inp{
+    border: 1px solid #C3C3C3;
+    width: 65%;
+    height: 60px;
+    border-radius: 8px;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    padding-left: 22px;
+    color: #7D7D7D;
+}
+.inp:focus{
+    outline: #7D7D7D ;
+}
+label{
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    color: #7D7D7D;
+}
+.flex{
+    display: flex;
+    flex-direction: column;
+}
+.btn{
+    display: flex;
+    gap: 19px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 47px;
+    position: relative;
+    bottom: 65px;
+}
+.button{
+    box-shadow: 0px 13px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 500px;
+    height: 60px;
+    width: 187px;
+    border: none;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.btn1{
+    background: #6AB4F8;
+}
+.btn1:hover{
+    background: #3499f7;
+}
+.btn2{
+    background: #4C57B6;
+}
+.btn2:hover{
+    background: #303ba5;
+}
