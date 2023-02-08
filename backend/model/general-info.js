@@ -10,6 +10,6 @@ const generalInfo = new Schema({
     ppdPackage: { type: String, required: true }
 }, { timestamps: true })
 
-const GInfo = mongoose.model('General', generalInfo)
+const GInfo = mongoose.model('generalinfo', generalInfo)
 
 module.exports = GInfo

@@ -12,6 +12,6 @@ const locationInfo = new Schema({
     longitude: { type: Number, required: true }
 }, { timestamps: true })
 
-const LInfo = mongoose.model('Location', locationInfo)
+const LInfo = mongoose.model('locationinfo', locationInfo)
 
 module.exports = LInfo

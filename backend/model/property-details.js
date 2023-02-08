@@ -17,6 +17,6 @@ const propertyDetails = new Schema({
     facing: { type: String }
 }, { timestamps: true })
 
-const PDetails = mongoose.model('PropertyDetails', propertyDetails)
+const PDetails = mongoose.model('propertydetails', propertyDetails)
 
 module.exports = PDetails
