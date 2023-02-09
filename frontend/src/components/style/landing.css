@@ -1,4 +1,4 @@
-.landing{
-    display: flex;
-    flex-wrap: wrap;
+.hr{
+    width: 100%;
+    border:1px solid #b9e9e3;
 }

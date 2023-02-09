@@ -1,17 +1,16 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const basicInfo = new Schema({
-    propertyType: { type: String, required: true },
-    negotable: { type: String },
-    price: { type: Number },
-    ownership: { type: String },
-    propertyAge: { type: Number },
-    propertyApprove: { type: String },
-    propertyDesc: { type: String },
-    bankLoan: { type: String }
+const schema = new Schema({
+    PPDID :{type:String},
+    propertyType: { type: String},
+    mobile: { type: Number },
+    totalArea: { type: Number },
+    views:{type: Number, default: Math.floor(Math.random() * 100)},
+    
+    // user: { type: ObjectId, ref: 'User' }
 }, { timestamps: true })
 
-const BInfo = mongoose.model('basicInfo', basicInfo)
+const basicInfo = mongoose.model('property', schema)
 
-module.exports = BInfo
+module.exports = basicInfo
