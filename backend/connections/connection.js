@@ -1,14 +1,9 @@
 const mongoose = require('mongoose')
+const { uri } = require('../keys')
 mongoose.set(`strictQuery`, true)
 async function getConnection() {
-    const uri = `mongodb://localhost/realEstate`
-    await mongoose.connect(uri, (err)=>{
-        if(err){
-            console.log("Connection to mongoDB failed");
-        }
-        else{
-            console.log("Connected to MongoDB successfully");
-        }
+    await mongoose.connect(uri).then(() => {
+        console.log('database connected successfuly');
     })
 }
 module.exports = getConnection
