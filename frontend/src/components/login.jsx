@@ -15,7 +15,7 @@ const Login = () =>{
        let user=await axios.post('http://localhost:3016/login',data)
        if (user.data.token)
        {
-        // localStorage.setItem("jwt", data.token)
+       localStorage.setItem("jwt", data.token)
        localStorage.setItem("user", JSON.stringify(user.data.user))
        console.log(user)
        setData({mailID:'', password:''})
@@ -62,3 +62,4 @@ const Login = () =>{
     )
 }
 export default Login
+

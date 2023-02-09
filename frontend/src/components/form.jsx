@@ -38,7 +38,7 @@ const Form = () => {
     landmark: "",
     longitude: "",
   });
-  const FormTitles = ["Sign Up", "Personal Info", "Other", "Location"];
+  const FormTitles = ["basic", "Personal Info", "Other", "Location"];
 
   const PageDisplay = () => {
     if (page === 0) {
@@ -53,12 +53,15 @@ const Form = () => {
   };
   const handleSubmit = async () => {
     try {
-      const { propertyType, mobile, ppd, area } = formData;
+      let user=  JSON.parse(localStorage.getItem('user'))._id
+      const { propertyType, mobile, ppd, area} = formData;
       const response = await axios.post("http://localhost:3016/basic", {
         propertyType,
         mobile,
         ppd,
         area,
+        user
+      
       });
       console.log(response.data);
       alert("Data Submitted Successfully");
