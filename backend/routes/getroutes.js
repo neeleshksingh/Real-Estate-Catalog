@@ -9,15 +9,10 @@ const bodyParser = require('body-parser')
 routes.get('/property',async(req,res)=>{
     try{
         const basicinfo=await Basic.find();
-        const generalinfo=await General.find();
-        const locationinfo=await Location.find();
-        const propertydetails=await Property.find();
-        res.status(200).send({
-            status:"success",
+        
+        res.status(200).json({
             basicInfo:basicinfo,
-            generalInfo:generalinfo,
-            locationInfo:locationinfo,
-            propertyDetails:propertydetails,
+            
         })
     }catch(e){
         res.status(204).send({
@@ -26,6 +21,17 @@ routes.get('/property',async(req,res)=>{
         })
     }
     
+})
+
+routes.get('/Search',async(req,res)=>{
+    try{
+        console.log(req.body)
+    }catch(e){
+        res.status(204).json({
+            status:"Failed",
+            message:e.message
+        })
+    }
 })
 
 module.exports=routes

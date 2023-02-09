@@ -1,0 +1,15 @@
+get http://localhost:3016/get/property
+
+
+###
+
+post http://localhost:3016/property
+Content-Type: application/json
+Accept: application/json
+
+{
+    "PPDID" :"hhgg",
+    "propertyType":"kksaja",
+    "mobile": 99888,
+    "totalArea":999
+}

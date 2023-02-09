@@ -1,6 +1,6 @@
 const express = require('express')
 const connection = require('./connections/connection')
-const userRoutes = require('./routes/property')
+const userRoutes = require('./routes/postrouter')
 const getroutes=require('./routes/getroutes')
 const cors = require('cors')
 connection()
