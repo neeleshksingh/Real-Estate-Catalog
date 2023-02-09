@@ -38,7 +38,7 @@ const Form = () => {
     landmark: "",
     longitude: "",
   });
-  const FormTitles = ["basic", "property", "general", "location"];
+  const FormTitles = ["Basic Info", "Property Details", "General Info", "Location Info"];
 
   const PageDisplay = () => {
     if (page === 0) {
