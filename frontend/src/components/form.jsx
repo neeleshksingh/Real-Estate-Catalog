@@ -38,8 +38,12 @@ const Form = () => {
     landmark: "",
     longitude: "",
   });
-  const FormTitles = ["Basic Info", "Property Details", "General Info", "Location Info"];
-
+  const FormTitles = [
+    "Basic Info",
+    "Property Details",
+    "General Info",
+    "Location Info",
+  ];
   const PageDisplay = () => {
     if (page === 0) {
       return <Basic formData={formData} setFormData={setFormData} />;
@@ -55,6 +59,11 @@ const Form = () => {
     try {
       let user = JSON.parse(localStorage.getItem("user"))._id;
       const { propertyType, mobile, ppd, area } = formData;
+      
+      if (!propertyType || !mobile || !ppd || !area) {
+        alert("Please fill out all the required fields marked with * before submitting the form.");
+        return;
+      }
       const response = await axios.post("http://localhost:3016/basic", {
         propertyType,
         mobile,
@@ -66,7 +75,7 @@ const Form = () => {
       alert("Data Submitted Successfully");
     } catch (error) {
       console.error(error);
-      alert("Error submitting data");
+      alert("error submitting form");
     }
   };
 

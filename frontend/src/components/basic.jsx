@@ -13,7 +13,7 @@ const Basic = ({ formData, setFormData }) => {
               value={formData.propertyType}
               onChange={(event) =>
                 setFormData({ ...formData, propertyType: event.target.value })
-              }
+              } required
             >
               <option value="" disable selected hidden>
                 Select Property Type

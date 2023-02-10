@@ -3,9 +3,9 @@ const Schema = mongoose.Schema
 const { ObjectId } = mongoose.Schema.Types;
 
 const basicInfoSchema = new Schema({
-    _id: {
-        type: String,
-        required: true
+     _id: {
+         type: String,
+         required: true
     },
     propertyType: { type: String, required: true },
     mobile: { type: String },
