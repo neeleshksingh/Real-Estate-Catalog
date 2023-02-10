@@ -38,7 +38,7 @@ const Form = () => {
     landmark: "",
     longitude: "",
   });
-  const FormTitles = ["basic", "Personal Info", "Other", "Location"];
+  const FormTitles = ["Basic Info", "Property Details", "General Info", "Location Info"];
 
   const PageDisplay = () => {
     if (page === 0) {
@@ -53,15 +53,14 @@ const Form = () => {
   };
   const handleSubmit = async () => {
     try {
-      let user=  JSON.parse(localStorage.getItem('user'))._id
-      const { propertyType, mobile, ppd, area} = formData;
+      let user = JSON.parse(localStorage.getItem("user"))._id;
+      const { propertyType, mobile, ppd, area } = formData;
       const response = await axios.post("http://localhost:3016/basic", {
         propertyType,
         mobile,
         ppd,
         area,
-        user
-      
+        user,
       });
       console.log(response.data);
       alert("Data Submitted Successfully");
@@ -74,14 +73,15 @@ const Form = () => {
   return (
     <div className="main">
       <div className="progressbar">
-      <div className="bar-head font">
-        <h1>ADD NEW PROPERTY</h1>
-      </div>
+        <div className="bar-head font">
+          <h1>ADD NEW PROPERTY</h1>
+        </div>
         <div className="bar">
-            <li className="li-bar">Basic Info</li>
-            <li className="li-bar">Property Details</li>
-            <li className="li-bar">General Info</li>
-            <li className="li-bar">Location Info</li>
+          {FormTitles.map((title, index) => (
+            <li className={`li-bar ${index === page ? "active" : ""}`}>
+              {title}
+            </li>
+          ))}
         </div>
       </div>
       <div className="container">
@@ -126,6 +126,5 @@ const Form = () => {
     </div>
   );
 };
-
 
 export default Form;
