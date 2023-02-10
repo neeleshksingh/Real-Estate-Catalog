@@ -1,14 +1,32 @@
-import { useState } from 'react'
+import { useState,useEffect} from 'react'
 import './components/style/prperty.css';
 import { SearchBar } from './components/searchbar';
+import {Link} from 'react-router-dom'
+
+
 export const Property=(props)=>{
     const [status,setstatus]=useState("Sold")
-    const statusHandler=()=>{
+    const [searchResult,setSeacrhResult]=useState()
+    
+    const statusHandler=(id)=>{
         status=="Sold"?setstatus("UnSold"):setstatus("Sold")
+         fetch(`http://localhost:3016/get/updatestatus/${id}`,{
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json','Accept':'application/json' },
+            body: JSON.stringify({status:status})
+        }).then(
+            data=>{return data.json()}
+        ).then(
+            data=>{setstatus(data.status)}
+        )
     }
+    useEffect(()=>{
+        statusHandler()
+    },[])
     return(
         <div className="property">
-            <h1><SearchBar basicInfo={props.basicInfo}/></h1>
+            
+            
             <table className='table'>
                 <thead>
                     <tr>
@@ -33,8 +51,9 @@ export const Property=(props)=>{
                                         <td>{values.mobile}</td>
                                         <td>{values.totalArea}</td>
                                         <td>{values.Views}</td>
+                                        <td>{values._id}</td>
                                         
-                                        <td><button onClick={statusHandler}>{status}</button></td>
+                                        <td><button onClick={statusHandler(values._id)}>{values.status}</button></td>
                                         <td>{Math.floor(Math.random()*100)}</td>
                                         <td><img src="https://img.icons8.com/small/16/000000/visible.png"/><img src="https://img.icons8.com/small/16/000000/pencil-tip.png"/></td>
                                       </tr>  

@@ -1,19 +1,29 @@
-import { useEffect, useState } from "react"
-
-export const SearchBar=(props)=>{
-    const [PPID,setPPID]=useState()
-    const Search=()=>{
-        let data=props.basicInfo
-        data= data.forEach(data=>{return(data.PPDID==PPID)})
-        console.log(props.basicInfo,)
+import { useEffect, useState } from 'react'
+export const Property=(props)=>{
+    const [status,setstatus]=useState("Sold");
+    const [searchResult,setSeacrhResult]=useState(null)
+    const statusHandler=async(id)=>{
+        status=="Sold"?setstatus("UnSold"):setstatus("Sold")
+        await fetch(`http://localhost:3016/get/updatstatus/${id}`,{
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json','Accept':'application/json' },
+            body: JSON.stringify({status:status})
+        }).then(
+            data=>{return data.json()}
+        ).then(
+            data=>{setstatus(data.status)}
+        )
     }
-    useEffect(()=>{
-        Search()
-    },[])
+    
+    const applyColor = (updateSelectionStyle) => {
+        setSeacrhResult(updateSelectionStyle)
+      }
+      useEffect(()=>{
+        statusHandler()
+      },[])
     return(
-        <div>
-            <input onChange={(e)=>{setPPID(e.target.value)}} value={PPID}/>
-            <button onClick={Search}>search</button>
+        <div className="property">
+            
         </div>
     )
 }

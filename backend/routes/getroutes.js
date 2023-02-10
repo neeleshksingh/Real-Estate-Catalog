@@ -1,11 +1,6 @@
 const routes=require('express').Router()
-const Property = require('../model/property-details')
 const Basic = require('../model/basic-info')
-const General = require('../model/general-info')
-const Location = require('../model/location-info')
 const bodyParser = require('body-parser')
-
-
 routes.get('/property',async(req,res)=>{
     try{
         const basicinfo=await Basic.find();
@@ -23,9 +18,11 @@ routes.get('/property',async(req,res)=>{
     
 })
 
-routes.get('/Search',async(req,res)=>{
+routes.get('/search/:id',async(req,res)=>{
     try{
-        console.log(req.body)
+        // console.log(req.body) 
+        const data=await Basic.find({PPDID:req.params.PPDID})
+        console.log(req.params.id)
     }catch(e){
         res.status(204).json({
             status:"Failed",
@@ -33,5 +30,14 @@ routes.get('/Search',async(req,res)=>{
         })
     }
 })
-
+routes.put('/updatestatus/:id',async(req,res)=>{
+    try{
+        // const data=await Basic.findByIdAndUpdate()
+        console.log(req.params)
+    }catch(e){
+        res.status.json({
+            message:e.message
+        })
+    }
+})
 module.exports=routes

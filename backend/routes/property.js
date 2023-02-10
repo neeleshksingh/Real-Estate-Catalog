@@ -3,7 +3,6 @@ const Basic = require('../model/basic-info')
 const bodyParser = require('body-parser')
 const UUser = require('../model/register')
 const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken');
 const { jwt_token } = require('../keys')
 
 const router = express.Router()
