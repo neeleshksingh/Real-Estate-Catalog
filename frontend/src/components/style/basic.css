@@ -1,34 +1,60 @@
-.container{
-    border: 1px solid black;
-    padding: 20px;
-}
-form{
-    border: 1px solid black;
-}
-.form{
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
+.container{
+    display: flex;
+    flex-direction: column;
+    /* margin-top: 120px; */
+    align-items: center;
+    height: 100vh;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+.body{
+    width: 65%;
+    border: none;
+    height: 663px;
+    box-shadow: 10px 14px 70px rgba(0, 0, 0, 18%);
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    gap: 60px;
-    height: 656px;
+    gap: 23px;
     padding: 61px;
+    position: relative;
+}
+.form{
+    position: absolute;
+    height: 501px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 23px;
+    background-color: white;
+    top: 35px;
+    width: 88%;
+}
+.flex{
+    display: flex;
+    flex-direction: column;
 }
 .inp{
     border: 1px solid #C3C3C3;
-    width: 65%;
-    height: 60px;
     border-radius: 8px;
+    height: 60px;
+    width: 100%;
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 23px;
-    padding-left: 22px;
     color: #7D7D7D;
+    padding-left: 22px;
 }
 .inp:focus{
-    outline: #7D7D7D ;
+    outline: none;
 }
 label{
     font-family: 'Source Sans Pro';
@@ -37,43 +63,112 @@ label{
     font-size: 20px;
     line-height: 25px;
     color: #7D7D7D;
+    
 }
-.flex{
-    display: flex;
-    flex-direction: column;
-}
+
 .btn{
-    display: flex;
-    gap: 19px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 47px;
-    position: relative;
-    bottom: 65px;
-}
-.button{
     box-shadow: 0px 13px 25px rgba(0, 0, 0, 0.15);
     border-radius: 500px;
-    height: 60px;
     width: 187px;
+    height: 60px;
     border: none;
+    cursor: pointer;
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
     line-height: 25px;
     color: #FFFFFF;
-    cursor: pointer;
 }
-.btn1{
+.footer{
+    position: absolute;
+    bottom: 125px;
+    display: flex;
+    gap: 19px;
+}
+.canc{
     background: #6AB4F8;
+    color: white;
 }
-.btn1:hover{
-    background: #3499f7;
-}
-.btn2{
+.nex{
     background: #4C57B6;
+    color: white;
 }
-.btn2:hover{
-    background: #303ba5;
+
+.cam{
+    height: 105px;
+    width: 105px;
+    border-radius: 50px;
+    background: #6AB4F8;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.13);
+    position: relative;
+}
+.cam-flex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 18px;
+}
+.cam-logo{
+    position: absolute;
+    left: 33.33%;
+    top: 33.33%;
+}
+.cam-logo-1{
+    position: absolute;
+    left: 46px;
+    top: 46px; 
+}
+.font{
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    color: #7D7D7D;
+    
+}
+.bar{
+    width: 60%;
+    height: 70px;
+    background: #FFFFFF;
+    box-shadow: 10px 14px 70px rgba(0, 0, 0, 7%);
+    border-radius: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+.li-bar{
+    height: 70px;
+    width: 20%;
+    background-color: white;
+    border-radius: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #AAAAAA;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+}
+.progressbar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 31px;
+    margin-top: 49px;
+}
+.bar-head{
+    width: 70%;
+    text-align: left;
+}
+.active{
+    background-color: #6AB4F8;
+    color: white;
+    box-shadow: 0px 13px 25px rgba(0, 0, 0, 25%);
 }

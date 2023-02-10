@@ -6,8 +6,6 @@ connection()
 
 const app = express()
 
-
-
 app.use(cors())
 app.use(userRoutes)
 
