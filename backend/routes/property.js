@@ -118,16 +118,37 @@ router.post('/login', async (req, res) => {
     })
   }
 })
-
-let counter = 0
+/*
 router.post('/basic', async (req, res) => {
   console.log(req.body);
 
   try {
     let { propertyType, mobile, area, views, ppd, user } = req.body;
     if (propertyType && mobile && area && ppd) {
+      let data = await Basic.create({ propertyType, mobile, area, views, ppd, user })
+
+      return res.status(201).json({ message: "data created", data });
+    }
+    else {
+      return res.status(400).json({ message: 'details are missing' })
+    }
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+}) */
+let counter = 0
+router.post('/basic', async (req, res) => {
+  console.log(req.body);
+  try {
+    let { propertyType, mobile, area, views, ppd, user } = req.body;
+    if (propertyType && mobile && area && ppd) {
       let customId = "PPD1" + (counter++).toString().padStart(3, '0');
 
+      let existingDocument = await Basic.findOne({ _id: customId });
+      while (existingDocument) {
+        customId = "PPD1" + (counter++).toString().padStart(3, '0');
+        existingDocument = await Basic.findOne({ _id: customId });
+      }
       let data = await Basic.create({
         _id: customId,
         propertyType,
@@ -137,7 +158,6 @@ router.post('/basic', async (req, res) => {
         ppd,
         user
       });
-
       return res.status(201).json({ message: "data created", data });
     } else {
       return res.status(400).json({ message: 'details are missing' });
