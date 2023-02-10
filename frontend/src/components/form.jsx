@@ -17,7 +17,7 @@ const Form = () => {
     propertyApprov: "",
     bankLoan: "",
     length: "",
-    totalArea: "",
+    Area: "",
     noofBhk: "",
     noofFloor: "",
     breath: "",
@@ -58,9 +58,9 @@ const Form = () => {
   const handleSubmit = async () => {
     try {
       let user = JSON.parse(localStorage.getItem("user"))._id;
-      const { propertyType, mobile, ppd, area } = formData;
+      const { propertyType, mobile, ppd, area, length, breath } = formData;
       
-      if (!propertyType || !mobile || !ppd || !area) {
+      if (!propertyType || !mobile || !ppd || !area || !length || !breath) {
         alert("Please fill out all the required fields marked with * before submitting the form.");
         return;
       }
@@ -69,6 +69,8 @@ const Form = () => {
         mobile,
         ppd,
         area,
+        length,
+        breath,
         user,
       });
       console.log(response.data);

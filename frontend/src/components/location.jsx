@@ -19,13 +19,13 @@ const Location = ({ formData, setFormData }) => {
             />
           </div>
           <div className="flex">
-            <label htmlFor="price">*Area</label>
+            <label htmlFor="price">Area</label>
             <br />
             <select
               className="nego inp"
-              value={formData.area}
+              value={formData.Area}
               onChange={(event) =>
-                setFormData({ ...formData, area: event.target.value })
+                setFormData({ ...formData, Area: event.target.value })
               }
             >
               <option value="" disable selected hidden>

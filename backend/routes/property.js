@@ -115,7 +115,6 @@ router.post('/basic', async (req, res) => {
     let { propertyType, mobile, area, views, ppd, user } = req.body;
     if (propertyType && mobile && area && ppd) {
       let customId = "PPD1" + (counter++).toString().padStart(3, '0');
-
       let existingDocument = await Basic.findOne({ _id: customId });
       while (existingDocument) {
         customId = "PPD1" + (counter++).toString().padStart(3, '0');
