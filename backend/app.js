@@ -1,15 +1,14 @@
 const express = require('express')
 const connection = require('./connections/connection')
-const userRoutes = require('./routes/postrouter')
-const getroutes=require('./routes/getroutes')
+const userRoutes = require('./routes/property')
 const cors = require('cors')
 connection()
 
 const app = express()
 
 app.use(cors())
-app.use("/",userRoutes)
-app.use('/get',getroutes)
+app.use(userRoutes)
+
 app.get("*", (req, res) => {
     res.status(404).send("API IS NOT FOUND");
 })
