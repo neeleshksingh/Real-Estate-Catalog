@@ -7,7 +7,9 @@ const basicInfoSchema = new Schema({
     mobile: { type: String },
     area: { type: Number },
     views: { type: Number, default: Math.floor(Math.random() * 100) },
-    ppd: { type: String },
+    ppd: { type: String, set: function(value) {
+        return 'PPD1' + value;
+    } },
     user: { type: ObjectId, ref: 'User', required: false }
 }, { timestamps: true });
 
