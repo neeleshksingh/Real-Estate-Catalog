@@ -1,16 +1,21 @@
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Form from "./components/form";
-import Login from "./components/login";
-import Register from "./components/register"
+
+import Basic from "./components/basic";
+import Property from "./components/property";
+import { Landing } from "./landingpage";
 
 function App() {
   return (
     <div className="App"> 
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login/>} />
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/form" element={<Form/>} />
+
+          <Route path="/" element={<><Basic  inp1='random' /></>} />
+          <Route path="/property" element={<Property/>} />
+          <Route path="/landing" element={<Landing/>}/>
+
+          
         </Routes>
       </BrowserRouter>
     </div>

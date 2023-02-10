@@ -13,36 +13,5 @@ Accept: application/json
     "mobile": 99888,
     "totalArea":999
 }
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-<<<<<<< HEAD
-import AddnewProp from "./components/addNewProp";
-import Basic from "./components/basic";
-import Property from "./components/property";
-import { Landing } from "./landingpage";
-=======
-import Form from "./components/form";
-import Login from "./components/login";
-import Register from "./components/register"
->>>>>>> 2e0e313be25361aa75cbee6852a31832b566f931
-
-function App() {
-  return (
-    <div className="App"> 
-      <BrowserRouter>
-        <Routes>
-<<<<<<< HEAD
-          <Route path="/" element={<><AddnewProp/><Basic  inp1='random' /></>} />
-          <Route path="/property" element={<><AddnewProp/><Basic inp1="neelesh"/></>} />
-          <Route path="/landing" element={<Landing/>}/>
-=======
-          <Route path="/" element={<Login/>} />
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/form" element={<Form/>} />
->>>>>>> 2e0e313be25361aa75cbee6852a31832b566f931
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
-}
-
-export default App;
+###
+put http://localhost:3016/get/updatestatus/63e3f6bedcd2361cfddfdf73
