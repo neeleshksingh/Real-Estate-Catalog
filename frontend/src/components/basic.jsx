@@ -18,9 +18,9 @@ const Basic = ({ formData, setFormData }) => {
               <option value="" disable selected hidden>
                 Select Property Type
               </option>
-              <option value="plot">Plot</option>
-              <option value="house">House</option>
-              <option value="flat">Flat</option>
+              <option value="Plot">Plot</option>
+              <option value="House">House</option>
+              <option value="Flat">Flat</option>
             </select>
           </div>
           <div className="flex">

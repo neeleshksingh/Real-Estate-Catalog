@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600;700&display=swap');
+*{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+img{
+    opacity: 0.5;
+    width: 22px;
+}
+.nav{
+    margin-top: 0.7em;
+    margin-left:28%; 
+    display: flex;
+    justify-content: space-between;
+    height: 2em;
+    justify-items: center;
+    font-weight: 600;
+    color:#AAAAAA;
+}
+.username{
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    gap: 0.5em;
+}
