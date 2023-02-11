@@ -1,14 +1,15 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import './style/login.css'
 import { createContext } from "react";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import { Navbar } from "../navbar";
+import { temp } from "./conetxt";
+import './style/login.css'
 import axios from "axios";
-export const temp=createContext()
+
 const Login = () =>{
     const [data,setData]= useState({mailID:'', password:''})
     const [error, setError] = useState('');
+    const {user,setUserInfo}=useContext(temp)
     const navigate = useNavigate()
     const handleLogin =  async()=>{
         try{
@@ -20,6 +21,7 @@ const Login = () =>{
        localStorage.setItem("jwt", data.token)
        localStorage.setItem("user", JSON.stringify(user.data.user))
        console.log(user)
+       setUserInfo(user.data.user)
        setData({mailID:'', password:''})
        navigate('/landing')
        }
@@ -35,10 +37,10 @@ const Login = () =>{
 
     }
     const handleReg = () =>{
-        navigate("/landing")
+        navigate("/register")
     }
    
-    
+    // console.log(user)
     return(
         <div className="login">
             <div id="container">
@@ -58,12 +60,11 @@ const Login = () =>{
                 </div>
                 { error && <div className="error">{error}</div> }
             </div>
-            <temp.Provider value={data}><Navbar data={data}/></temp.Provider>
             <div>
                 <p className="font">Don’t have an account? <span className="signup font" onClick={handleReg}>Sign up</span></p>
             </div>
         </div>
-
+        
     )
 }
 export default Login

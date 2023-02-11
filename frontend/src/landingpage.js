@@ -4,7 +4,6 @@ import './components/style/landing.css'
 import { Home } from './home'
 import { Navbar } from './navbar';
 import {Link, useNavigate} from 'react-router-dom';
-
 export const Landing = () => {
     const [basicInfo, setBasicInfo] = useState();
     const [PPID, setPPID] = useState()

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import './components/style/prperty.css';
-import { StatusUpdate } from './components/statusUpdate';
 import { Link } from 'react-router-dom'
 
 

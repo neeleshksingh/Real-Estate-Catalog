@@ -136,10 +136,10 @@ router.post('/login', async (req, res) => {
       }
       if (result) {
         const token = jwt.sign({ _id: userData.id }, jwt_token)
-        const { _id, mailID, password } = userData
+        const { _id, mailID, password,customId} = userData
         return res.json({
           token: token,
-          user: { _id, mailID, password },
+          user: { _id, mailID, password,customId},
           message: "user logged in successully"
         })
       }
