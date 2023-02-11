@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
-import './components/style/home.css';
+import './components/style/prperty.css';
+import { StatusUpdate } from './components/statusUpdate';
 import { Link } from 'react-router-dom'
+
 
 export const Home = (props) => {
     const [idStatus, setidStatus] = useState({ id: '', status: '' })
@@ -9,7 +11,7 @@ export const Home = (props) => {
             // status=="Sold"?setstatus("UnSold"):setstatus("Sold")
             console.log(idStatus.id)
             // let id=idStatus.id
-            fetch(`http://localhost:3016/get/updatestatus/${idStatus.id}`, {
+            fetch(`https://real-estate-catalog-gp8x.onrender.com/get/updatestatus/${idStatus.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify({ status: idStatus.status })
@@ -28,6 +30,8 @@ export const Home = (props) => {
 
     return (
         <div className="property">
+
+
             <table className='table'>
                 <thead>
                     <tr>
@@ -53,7 +57,7 @@ export const Home = (props) => {
                                 <td>{values.area}</td>
                                 <td>{values.views}</td>
 
-                                <td><button onClick={() => { setidStatus({ id: values._id, status: values.status }) }} className="status">{values.status}</button></td>
+                                <td><button className='status' onClick={() => { setidStatus({ id: values._id, status: values.status }) }}>{values.status}</button></td>
                                 <td>{values.status=='unsold'?Math.floor(Math.random() * 100):"00"}</td>
                                 <td><img src="https://img.icons8.com/small/16/000000/visible.png" /><img src="https://img.icons8.com/small/16/000000/pencil-tip.png" /></td>
                             </tr>

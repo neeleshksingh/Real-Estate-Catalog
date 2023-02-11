@@ -19,7 +19,7 @@ const registers = async () => {
   if (val.password === val.confirmpassword && verify) {
     setError(false);
     try {
-      let data = await axios.post('http://localhost:3016/register', val);
+      let data = await axios.post('https://real-estate-catalog-gp8x.onrender.com/register', val);
       if (data.data.status === "signup failed") {
         alert(data.data.error);
       } else {
@@ -59,8 +59,8 @@ const registers = async () => {
                 <div className="btn-field flexing">
                     <button id="signin" onClick={registers}>Sign up</button>
                 </div>
-                {error && <div>All fields are mandatory</div>}
-          {val.password.length!==0 && val.password!== val.confirmpassword ?<div>The password must be same</div>: null}
+                {error && <div className="err-1">*All fields are mandatory</div>}
+          {val.password.length!==0 && val.password!== val.confirmpassword ?<div className="err-1">The password must be same</div>: null}
             </div>
             <div>
                 <p><span id="sgnup" className="signup font" onClick={()=>{navigate('/')}}>Sign in</span></p>

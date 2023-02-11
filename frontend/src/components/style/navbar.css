@@ -2,18 +2,15 @@
 *{
     font-family: 'Source Sans Pro', sans-serif;
 }
-/* img{
-    opacity: 0.5;
-    width: 22px;
-} */
 .nav{
-    margin-top: 0.7em;
-    margin-left:26%; 
-    padding-top: 1.5em;
-    padding-right: 1.5em;
+
+    padding-right: 10px;
+    margin-left:26%;
     display: flex;
     justify-content: space-between;
-    height: 4em;
+    align-items: center;
+    height: 7em;
+
     justify-items: center;
     font-weight: 600;
     color:#AAAAAA;
@@ -21,11 +18,17 @@
 }
 .username{
     display: flex;
-    justify-content: space-between;
     justify-items: center;
     gap: 0.5em;
+}
+.user-name{
+    display: flex;
+    gap: 4px;
 }
 .hr{
     width: 100%;
     border:1px solid #b9e9e3;
+}
+.logout-btn{
+    cursor: pointer;
 }

@@ -66,7 +66,7 @@ const Form = () => {
         alert("Please fill out all the required fields marked with * before submitting the form.");
         return;
       }
-      const response = await axios.post("http://localhost:3016/basic", {
+      const response = await axios.post("https://real-estate-catalog-gp8x.onrender.com/basic", {
         propertyType,
         mobile,
         ppd,
@@ -99,7 +99,7 @@ const Form = () => {
         </div>
       </div>
       <div className="container">
-        <div className="body">{PageDisplay()}</div>
+        <div className="body">{PageDisplay()}
         <div className="footer">
           {page !== 0 && (
             <button
@@ -135,7 +135,8 @@ const Form = () => {
               ? "Add Property"
               : "Save & Continue"}
           </button>
-        </div>
+        </div></div>
+        
       </div>
     </div>
   );
