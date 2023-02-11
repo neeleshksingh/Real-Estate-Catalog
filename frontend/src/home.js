@@ -11,7 +11,7 @@ export const Home = (props) => {
             // status=="Sold"?setstatus("UnSold"):setstatus("Sold")
             console.log(idStatus.id)
             // let id=idStatus.id
-            fetch(`http://localhost:3016/get/updatestatus/${idStatus.id}`, {
+            fetch(`https://real-estate-catalog-gp8x.onrender.com/get/updatestatus/${idStatus.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify({ status: idStatus.status })

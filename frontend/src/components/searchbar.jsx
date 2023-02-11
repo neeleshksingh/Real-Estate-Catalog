@@ -4,7 +4,7 @@ export const Property=(props)=>{
     const [searchResult,setSeacrhResult]=useState(null)
     const statusHandler=async(id)=>{
         status=="Sold"?setstatus("UnSold"):setstatus("Sold")
-        await fetch(`http://localhost:3016/get/updatstatus/${id}`,{
+        await fetch(`https://real-estate-catalog-gp8x.onrender.com/get/updatstatus/${id}`,{
             method: 'PUT',
             headers: { 'Content-Type': 'application/json','Accept':'application/json' },
             body: JSON.stringify({status:status})

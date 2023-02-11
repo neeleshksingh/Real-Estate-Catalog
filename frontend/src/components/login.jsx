@@ -15,7 +15,7 @@ const Login = () =>{
         try{
         if(data.mailID && data.password)
      {
-       let user=await axios.post('http://localhost:3016/login',data)
+       let user=await axios.post('https://real-estate-catalog-gp8x.onrender.com/login',data)
        if (user.data.token)
        {
        localStorage.setItem("jwt", data.token)
