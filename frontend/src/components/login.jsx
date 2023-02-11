@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from "react"
+import { useState, createContext, useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import './style/login.css'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -28,11 +28,11 @@ const Login = () =>{
      }
      else
      {
-        setError('*All fields are madnatory')
+        setError('*All fields are madnatory')  
      }
     }catch (error) {
         console.log(error)
-        setError(error.response.data.message);
+        setError("*User not found");
      }
 
     }
@@ -47,7 +47,7 @@ const Login = () =>{
             setShow("text")
         }
     }
-    
+
     return(
         <temp.Provider value={data}>
         <div className="login">

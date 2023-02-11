@@ -1,6 +1,6 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 .header{
-    margin-left: 28%;
+    margin-left: 25%;
     display: flex;
     justify-content:space-between ;
     height: 6em;

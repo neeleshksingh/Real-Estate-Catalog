@@ -7,7 +7,7 @@ const Logout = () =>{
         Navigate('/')
     }
     return(
-        <div onClick={handlelog}>
+        <div className="logout-btn" onClick={handlelog}>
             Logout
         </div>
     )
