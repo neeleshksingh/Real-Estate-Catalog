@@ -4,52 +4,8 @@ import './style/login.css'
 import axios from "axios";
 
 const Register = () =>{
-    const navigate = useNavigate();
-    /*
-    const register = async()=>{
-
-    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    
-        if(email!==""){
-            if(!emailRegex.test(email)){
-                alert("Invalid Email");
-                return
-               }  
-        } 
-
-        if(password.length<7 && password.length>=14){
-            
-                alert("password must be between 7 to 14 characters/ numbers.")
-                return
-            
-        }         
-             
-       await fetch("http://localhost:3016/register",{
-            method:"post",
-            headers:{
-                "Content-Type":"Application/json"
-            },
-            body: JSON.stringify({
-                mailID:email,
-                password:password,
-                confirmpassword:confpassword
-            })
-        }).then(res=>res.json())
-        .then(data=>{
-            if(data.error){
-                alert(data.error)
-                
-            }
-            if(data.message){
-                alert(data.message)
-                navigate('/')
-            }
-            console.log(data)})
-        .catch(e=>console.log(e))
-        
-    }*/
-
-    const isloggedin= localStorage.getItem('userdetails')
+  const navigate = useNavigate();
+  const isloggedin= localStorage.getItem('userdetails')
   const [val, setVal] = useState({
     mailID: "",
     password: "",
@@ -65,13 +21,13 @@ useEffect(()=>{
 console.log(val)
   
   const registers=async()=>{
-    let verify = val.password.length!=0 && val.mailID.length!=0 && val.confirmpassword.length!=0
-    if(val.password == val.confirmpassword && verify)
+    let verify = val.password.length!==0 && val.mailID.length!==0 && val.confirmpassword.length!==0
+    if(val.password === val.confirmpassword && verify)
     {
     setError(false)
     let data=await axios.post('http://localhost:3016/register', val)
-    // localStorage.setItem('userdetails',JSON.stringify(data.data.userInfo))
-    // localStorage.setItem('token',JSON.stringify(data.data.token))
+    localStorage.setItem('userdetails',JSON.stringify(data.data.userInfo))
+    localStorage.setItem('token',JSON.stringify(data.data.token))
     setVal({
         userID: "",
         password: "",

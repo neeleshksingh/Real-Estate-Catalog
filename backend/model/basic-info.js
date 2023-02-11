@@ -4,6 +4,7 @@ const { ObjectId } = mongoose.Schema.Types;
 
 const basicInfoSchema = new Schema({
     _id: {
+
          type: String,
          required: true
     },
@@ -18,5 +19,7 @@ const basicInfoSchema = new Schema({
 
 const BInfo = mongoose.model('Basic', basicInfoSchema)
 
+
 module.exports = BInfo
+
 

@@ -17,7 +17,7 @@ const Form = () => {
     propertyApprov: "",
     bankLoan: "",
     length: "",
-    totalArea: "",
+    Area: "",
     noofBhk: "",
     noofFloor: "",
     breath: "",
@@ -38,8 +38,12 @@ const Form = () => {
     landmark: "",
     longitude: "",
   });
-  const FormTitles = ["basic", "Personal Info", "Other", "Location"];
-
+  const FormTitles = [
+    "Basic Info",
+    "Property Details",
+    "General Info",
+    "Location Info",
+  ];
   const PageDisplay = () => {
     if (page === 0) {
       return <Basic formData={formData} setFormData={setFormData} />;
@@ -53,35 +57,42 @@ const Form = () => {
   };
   const handleSubmit = async () => {
     try {
-      let user=  JSON.parse(localStorage.getItem('user'))._id
-      const { propertyType, mobile, ppd, area} = formData;
+      let user = JSON.parse(localStorage.getItem("user"))._id;
+      const { propertyType, mobile, ppd, area, length, breath } = formData;
+      
+      if (!propertyType || !mobile || !ppd || !area || !length || !breath) {
+        alert("Please fill out all the required fields marked with * before submitting the form.");
+        return;
+      }
       const response = await axios.post("http://localhost:3016/basic", {
         propertyType,
         mobile,
         ppd,
         area,
-        user
-      
+        length,
+        breath,
+        user,
       });
       console.log(response.data);
       alert("Data Submitted Successfully");
     } catch (error) {
       console.error(error);
-      alert("Error submitting data");
+      alert("error submitting form");
     }
   };
 
   return (
     <div className="main">
       <div className="progressbar">
-      <div className="bar-head font">
-        <h1>ADD NEW PROPERTY</h1>
-      </div>
+        <div className="bar-head font">
+          <h1>ADD NEW PROPERTY</h1>
+        </div>
         <div className="bar">
-            <li className="li-bar">Basic Info</li>
-            <li className="li-bar">Property Details</li>
-            <li className="li-bar">General Info</li>
-            <li className="li-bar">Location Info</li>
+          {FormTitles.map((title, index) => (
+            <li className={`li-bar ${index === page ? "active" : ""}`}>
+              {title}
+            </li>
+          ))}
         </div>
       </div>
       <div className="container">
@@ -126,6 +137,5 @@ const Form = () => {
     </div>
   );
 };
-
 
 export default Form;

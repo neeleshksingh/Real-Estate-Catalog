@@ -4,7 +4,6 @@ mongoose.set(`strictQuery`, true)
 async function getConnection() {
     await mongoose.connect(uri).then(() => {
         console.log('database connected successfuly');
-
     })
 }
 module.exports = getConnection

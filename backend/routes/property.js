@@ -9,24 +9,9 @@ const router = express.Router()
 router.use(bodyParser.urlencoded({ extended: false }))
 router.use(bodyParser.json())
 
-// router.get('/basic', async (req, res) => {
-//     try {
-//         let data = await Basic.find()
-//         return res.status(200).json(data)
-//     }
-//     catch (err) {
-//         return res.status(400).json({ message: err.message })
-//     }
-// })
-router.get('/register', async (req, res) => {
-  try {
-    let data = await UUser.find()
-    return res.status(200).json(data)
-  }
-  catch (err) {
-    return res.status(400).json({ message: err.message })
-  }
-})
+
+
+//Post api for register
 
 router.post('/register', async (req, res) => {
   try {
@@ -76,6 +61,8 @@ router.post('/register', async (req, res) => {
   }
 });
 
+//Post api for login
+
 router.post('/login', async (req, res) => {
   try {
     const { mailID, password } = req.body;
@@ -118,22 +105,36 @@ router.post('/login', async (req, res) => {
   }
 })
 
+// Post api for filling form
+
+let counter = 0
 router.post('/basic', async (req, res) => {
   console.log(req.body);
-
   try {
     let { propertyType, mobile, area, views, ppd, user } = req.body;
     if (propertyType && mobile && area && ppd) {
-      let data = await Basic.create({ propertyType, mobile, area, views, ppd, user })
-
+      let customId = "PPD1" + (counter++).toString().padStart(3, '0');
+      let existingDocument = await Basic.findOne({ _id: customId });
+      while (existingDocument) {
+        customId = "PPD1" + (counter++).toString().padStart(3, '0');
+        existingDocument = await Basic.findOne({ _id: customId });
+      }
+      let data = await Basic.create({
+        _id: customId,
+        propertyType,
+        mobile,
+        area,
+        views,
+        ppd,
+        user
+      });
       return res.status(201).json({ message: "data created", data });
-    }
-    else {
-      return res.status(400).json({ message: 'details are missing' })
+    } else {
+      return res.status(400).json({ message: 'details are missing' });
     }
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
-})
+});
 
 module.exports = router

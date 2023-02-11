@@ -1,35 +1,42 @@
 import "./style/basic.css";
 
 const Property = ({ formData, setFormData }) => {
+  const handleLengthChange = (event) => {
+    const length = event.target.value;
+    const area = length * formData.breath;
+    setFormData({ ...formData, length, area });
+  };
+
+  const handleBreathChange = (event) => {
+    const breath = event.target.value;
+    const area = formData.length * breath;
+    setFormData({ ...formData, breath, area });
+  };
   return (
     <div>
       <form action="">
         <div className="form">
           <div className="flex">
-            <label htmlFor="property-type">Length</label>
+            <label htmlFor="property-type">*Length</label>
             <br />
             <input
               type="number"
               placeholder="Example 1000"
               className="inp"
               value={formData.length}
-              onChange={(event) =>
-                setFormData({ ...formData, length: event.target.value })
-              }
+              onChange={handleLengthChange}
             />
           </div>
           <div className="flex">
-            <label htmlFor="price">Total Area</label>
+            <label htmlFor="price">*Total Area</label>
             <br />
             <input
               type="number"
               placeholder="Example: 7500"
               className="inp"
               id="price"
-              value={formData.totalArea}
-              onChange={(event) =>
-                setFormData({ ...formData, totalArea: event.target.value })
-              }
+              value={formData.area}
+              readOnly
             />
           </div>
           <div className="flex">
@@ -72,16 +79,14 @@ const Property = ({ formData, setFormData }) => {
             </select>
           </div>
           <div className="flex">
-            <label htmlFor="nego">Breath</label>
+            <label htmlFor="nego">*Breath</label>
             <br />
             <input
               type="number"
               placeholder="Example 1000"
               className="inp"
               value={formData.breath}
-              onChange={(event) =>
-                setFormData({ ...formData, breath: event.target.value })
-              }
+              onChange={handleBreathChange}
             />
           </div>
           <div className="flex">
