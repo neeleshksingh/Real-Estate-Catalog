@@ -19,7 +19,7 @@ const Login = () =>{
        localStorage.setItem("user", JSON.stringify(user.data.user))
        console.log(user)
        setData({mailID:'', password:''})
-       navigate('/form')
+       navigate('/landing')
        }
      }
      else

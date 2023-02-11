@@ -2,10 +2,10 @@
 *{
     font-family: 'Source Sans Pro', sans-serif;
 }
-img{
+/* img{
     opacity: 0.5;
     width: 22px;
-}
+} */
 .nav{
     margin-top: 0.7em;
     margin-left:28%; 
@@ -21,4 +21,8 @@ img{
     justify-content: space-between;
     justify-items: center;
     gap: 0.5em;
+}
+.hr{
+    width: 100%;
+    border:1px solid #b9e9e3;
 }

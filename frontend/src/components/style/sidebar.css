@@ -2,13 +2,13 @@
 *{
     font-family: 'Source Sans Pro', sans-serif;
 }
-img{
+/* img{
     opacity: 0.5;
-}
+} */
 .main-sidebar{
      
         height: 100%; /* Full-height: remove this if you want "auto" height */
-        width: 25%; /* Set the width of the sidebar */
+        width: 18%; /* Set the width of the sidebar */
         position: fixed; /* Fixed Sidebar (stay in place on scroll) */
         z-index: 1; /* Stay on top */
         top: 0; /* Stay at the top */

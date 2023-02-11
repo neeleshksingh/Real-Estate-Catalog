@@ -1,43 +1,53 @@
-const routes=require('express').Router()
+const routes = require('express').Router()
 const Basic = require('../model/basic-info')
 const bodyParser = require('body-parser')
-routes.get('/property',async(req,res)=>{
-    try{
-        const basicinfo=await Basic.find();
-        
+routes.use(bodyParser.json())
+routes.get('/property', async (req, res) => {
+    try {
+        const basicinfo = await Basic.find();
+
         res.status(200).json({
-            basicInfo:basicinfo,
-            
+            basicInfo: basicinfo,
+
         })
-    }catch(e){
+    } catch (e) {
         res.status(204).send({
-            status:"failed",
-            message:e.message
+            status: "failed",
+            message: e.message
         })
     }
-    
+
 })
 
-routes.get('/search/:id',async(req,res)=>{
-    try{
+routes.get('/search/:id', async (req, res) => {
+    try {
         // console.log(req.body) 
-        const data=await Basic.find({PPDID:req.params.PPDID})
+        const data = await Basic.find({ PPDID: req.params.PPDID })
         console.log(req.params.id)
-    }catch(e){
+    } catch (e) {
         res.status(204).json({
-            status:"Failed",
-            message:e.message
+            status: "Failed",
+            message: e.message
         })
     }
 })
-routes.put('/updatestatus/:id',async(req,res)=>{
-    try{
-        // const data=await Basic.findByIdAndUpdate()
-        console.log(req.params)
-    }catch(e){
-        res.status.json({
-            message:e.message
+routes.put('/updatestatus/:id', async (req, res) => {
+    try {
+        const data = await Basic.findByIdAndUpdate(req.params.id, { status: req.body.status == 'unsold' ? "Sold" : "Sold" },
+            function (err, docs) {
+                if (err) {
+                    console.log(err)
+                }
+                else {
+                    console.log(docs)
+                }
+            });
+        JSON.parse(docs)
+        res.json(docs)
+    } catch (e) {
+        res.status(204).json({
+            message: e.message
         })
     }
 })
-module.exports=routes
+module.exports = routes
