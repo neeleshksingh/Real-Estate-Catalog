@@ -15,3 +15,9 @@ Accept: application/json
 }
 ###
 put http://localhost:3016/get/updatestatus/63e3f6bedcd2361cfddfdf73
+Content-Type: application/json
+Accept: application/json
+
+{
+    "status" :"Sold"
+}

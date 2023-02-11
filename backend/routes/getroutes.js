@@ -1,6 +1,7 @@
 const routes=require('express').Router()
 const Basic = require('../model/basic-info')
 const bodyParser = require('body-parser')
+routes.use(bodyParser.json())
 routes.get('/property',async(req,res)=>{
     try{
         const basicinfo=await Basic.find();
@@ -32,10 +33,19 @@ routes.get('/search/:id',async(req,res)=>{
 })
 routes.put('/updatestatus/:id',async(req,res)=>{
     try{
-        // const data=await Basic.findByIdAndUpdate()
-        console.log(req.params)
+        const data=await Basic.findByIdAndUpdate(req.params.id, { status: req.body.status=='unsold'?"Sold":"Sold"},
+        function (err, docs) {
+                                if (err){
+                                console.log(err)
+                                }
+                                else{
+                                console.log(docs)
+                                }
+        });
+        JSON.parse(docs)
+        res.json(docs)
     }catch(e){
-        res.status.json({
+        res.status(204).json({
             message:e.message
         })
     }

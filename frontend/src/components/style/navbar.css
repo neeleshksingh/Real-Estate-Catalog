@@ -22,3 +22,7 @@ img{
     justify-items: center;
     gap: 0.5em;
 }
+.hr{
+    width: 100%;
+    border:1px solid #b9e9e3;
+}

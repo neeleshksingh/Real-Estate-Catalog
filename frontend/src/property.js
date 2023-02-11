@@ -1,32 +1,37 @@
-import { useState,useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import './components/style/prperty.css';
-import { SearchBar } from './components/searchbar';
-import {Link} from 'react-router-dom'
+import { StatusUpdate } from './components/statusUpdate';
+import { Link } from 'react-router-dom'
 
 
-export const Property=(props)=>{
-    const [status,setstatus]=useState("Sold")
-    const [searchResult,setSeacrhResult]=useState()
-    
-    const statusHandler=(id)=>{
-        status=="Sold"?setstatus("UnSold"):setstatus("Sold")
-         fetch(`http://localhost:3016/get/updatestatus/${id}`,{
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json','Accept':'application/json' },
-            body: JSON.stringify({status:status})
-        }).then(
-            data=>{return data.json()}
-        ).then(
-            data=>{setstatus(data.status)}
-        )
-    }
-    useEffect(()=>{
+export const Property = (props) => {
+    const [idStatus, setidStatus] = useState({ id: '', status: '' })
+    useEffect(() => {
+        function statusHandler(id) {
+            // status=="Sold"?setstatus("UnSold"):setstatus("Sold")
+            console.log(idStatus.id)
+            // let id=idStatus.id
+            fetch(`http://localhost:3016/get/updatestatus/${idStatus.id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({ status: idStatus.status })
+            }).then(
+                data => data.json()
+            ).then(
+                data => { console.log(data.status) }
+            ).catch(err => { console.log(err) })
+        }
         statusHandler()
-    },[])
-    return(
+        props.fetchData()
+        return (() => {
+            setidStatus({ id: '', status: '' })
+        })
+    }, [idStatus.id, idStatus.status])
+
+    return (
         <div className="property">
-            
-            
+
+
             <table className='table'>
                 <thead>
                     <tr>
@@ -42,24 +47,23 @@ export const Property=(props)=>{
                     </tr>
                 </thead>
                 <tbody>
-                        { props.basicInfo ? props.basicInfo.map((values,index)=>{
-                                return(
-                                      <tr key={index}>
-                                        <td>{values.PPDID}</td>
-                                        <td><img src="https://img.icons8.com/small/16/000000/image.png"/></td>
-                                        <td>{values.propertyType}</td>
-                                        <td>{values.mobile}</td>
-                                        <td>{values.totalArea}</td>
-                                        <td>{values.Views}</td>
-                                        <td>{values._id}</td>
-                                        
-                                        <td><button onClick={statusHandler(values._id)}>{values.status}</button></td>
-                                        <td>{Math.floor(Math.random()*100)}</td>
-                                        <td><img src="https://img.icons8.com/small/16/000000/visible.png"/><img src="https://img.icons8.com/small/16/000000/pencil-tip.png"/></td>
-                                      </tr>  
-                                    )
-                            })
-                        :null}
+                    {props.basicInfo ? props.basicInfo.map((values, index) => {
+                        return (
+                            <tr key={index}>
+                                <td>{values._id}</td>
+                                <td><img src="https://img.icons8.com/small/16/000000/image.png" /></td>
+                                <td>{values.propertyType}</td>
+                                <td>{values.mobile}</td>
+                                <td>{values.totalArea}</td>
+                                <td>{values.views}</td>
+
+                                <td><button onClick={() => { setidStatus({ id: values._id, status: values.status }) }}>{values.status}</button></td>
+                                <td>{values.status=='unsold'?Math.floor(Math.random() * 100):"00"}</td>
+                                <td><img src="https://img.icons8.com/small/16/000000/visible.png" /><img src="https://img.icons8.com/small/16/000000/pencil-tip.png" /></td>
+                            </tr>
+                        )
+                    })
+                        : null}
                 </tbody>
             </table>
         </div>

@@ -1,7 +1,30 @@
-.hr{
-    width: 100%;
-    border:1px solid #b9e9e3;
-}
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 .header{
     margin-left: 28%;
+    display: flex;
+    justify-content:space-between ;
 }
+.search-container {
+    float: left;
+    position:relative;
+}
+.search-container input{
+    height: 2.5em;
+    border-radius: 10px;
+    position:relative;
+}
+.search-container button:hover {
+    background: #ccc;
+}
+.search-container button {
+    height: 2.5em;
+    float: right;
+    position: absolute;
+    left: 81%;
+    bottom: 1px;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5rem;
+}
+  

@@ -11,19 +11,22 @@ export const Landing = () => {
     const [search,setSeacrhResult]=useState(null)
     const Search = async () => {
         let data = basicInfo
-        data.forEach(data => { if (data.PPDID === PPID) setSeacrhResult([data]) })
+        data.forEach(data => { if (data._id === PPID) setSeacrhResult([data]) })
         // console.log(search)
     }
-  
-    useEffect(() => {
+    const fetchData=()=>{
         fetch('http://localhost:3016/get/property').then((data) => {
-            return data.json()
-        }).then((data) => {
-            setBasicInfo(data?.basicInfo)
-            // console.log(basicInfo)
-        }).catch((err) => {
-            console.log(err)
-        });
+          return data.json()
+      }).then((data) => {
+          setBasicInfo(data?.basicInfo)
+          // console.log(basicInfo)
+      }).catch((err) => {
+          console.log(err)
+      });
+      }
+    useEffect(() => {
+        
+        fetchData();
         Search();
     }, [])
     return (
@@ -34,12 +37,12 @@ export const Landing = () => {
 
                 <div>
                     <Navbar />
-                    <hr className='hr' />
+                    
                     <header className='header'>
-                        <div>
-                            <input onChange={(e) => { setPPID(e.target.value) }} value={PPID} />
-                            <button onClick={Search} >search</button>
-                        </div>
+                    <div class="search-container">
+                            <input onChange={(e) => { setPPID(e.target.value) }} value={PPID} type="text" placeholder="Search.." name="search" />
+                            <button onClick={Search} type="submit"><i class="fa fa-search"></i></button>
+                    </div>
                         <div>
                             <Link to="/property">
 
@@ -49,7 +52,7 @@ export const Landing = () => {
                         </div>
                     </header>
                     {/* <Property basicInfo={basicInfo} /> */}
-                    <Property basicInfo={search==null?basicInfo:search} />
+                    <Property basicInfo={search==null?basicInfo:search} fetchData={fetchData}/>
                 </div>
 
             </div>
