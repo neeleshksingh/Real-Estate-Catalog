@@ -8,13 +8,16 @@
 } */
 .nav{
     margin-top: 0.7em;
-    margin-left:28%; 
+    margin-left:26%; 
+    padding-top: 1.5em;
+    padding-right: 1.5em;
     display: flex;
     justify-content: space-between;
-    height: 2em;
+    height: 4em;
     justify-items: center;
     font-weight: 600;
     color:#AAAAAA;
+    box-shadow: 2px 2px 2px#808fa0;
 }
 .username{
     display: flex;
