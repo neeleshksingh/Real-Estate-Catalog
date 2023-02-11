@@ -5,19 +5,20 @@ import {temp} from './components/conetxt'
 
 export const Navbar=()=>{
     const {userinfo,setuserInfo}=useContext(temp)
-    console.log(userinfo)
+    const [user,setuser]=useState()
+    // setuser(userinfo)
     return(
         <div>
             <div className="nav">
                 <div>
-                    USER ID:{userinfo?.customId}
+                    USER ID:
                 </div>
                 <div className="username">
                     <div>
                     <img src="https://img.icons8.com/small/16/000000/gender-neutral-user.png"/>
                     </div>
                     <div>
-                        User Name: {userinfo.mailID}
+                        User Name:
                         <select>
                             
 
