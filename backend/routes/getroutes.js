@@ -7,17 +7,18 @@ routes.get('/property',async(req,res)=>{
     try{
         const basicinfo=await Basic.find();
         
+
         res.status(200).json({
-            basicInfo:basicinfo,
-            
+            basicInfo: basicinfo,
+
         })
-    }catch(e){
+    } catch (e) {
         res.status(204).send({
-            status:"failed",
-            message:e.message
+            status: "failed",
+            message: e.message
         })
     }
-    
+
 })
 
 routes.get('/search/:id',async(req,res)=>{
@@ -26,9 +27,10 @@ routes.get('/search/:id',async(req,res)=>{
         const data=await Basic.find({PPDID:req.params.PPDID})
         console.log(req.params.id)
     }catch(e){
+
         res.status(204).json({
-            status:"Failed",
-            message:e.message
+            status: "Failed",
+            message: e.message
         })
     }
 })

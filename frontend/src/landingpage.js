@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Sidebar } from './sidebar'
 import './components/style/landing.css'
-import { Property } from './property'
+import { Home } from './home'
 import { Navbar } from './navbar';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 export const Landing = () => {
     const [basicInfo, setBasicInfo] = useState();
@@ -40,19 +40,20 @@ export const Landing = () => {
                     
                     <header className='header'>
                     <div class="search-container">
-                            <input onChange={(e) => { setPPID(e.target.value) }} value={PPID} type="text" placeholder="Search.." name="search" />
-                            <button onClick={Search} type="submit"><i class="fa fa-search"></i></button>
+
+
+                            <input className="inp-ser" onChange={(e) => { setPPID(e.target.value) }} value={PPID} type="text" placeholder="Search PPD ID" name="search" />
+                            <button className="ser-btn" onClick={Search} type="submit"><i class="fa fa-search"></i></button>
                     </div>
                         <div>
-                            <Link to="/property">
-
-                                <button>Enter</button>
-
+                            <Link to="/form">
+                                <button className="add-prop">+ Add Property</button>
                             </Link>
                         </div>
                     </header>
                     {/* <Property basicInfo={basicInfo} /> */}
-                    <Property basicInfo={search==null?basicInfo:search} fetchData={fetchData}/>
+
+                    <Home basicInfo={search==null?basicInfo:search} fetchData={fetchData}/>
                 </div>
 
             </div>

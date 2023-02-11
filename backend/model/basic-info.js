@@ -18,8 +18,6 @@ const basicInfoSchema = new Schema({
 }, { timestamps: true });
 
 const BInfo = mongoose.model('Basic', basicInfoSchema)
-
-
 module.exports = BInfo
 
 

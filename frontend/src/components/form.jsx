@@ -5,8 +5,10 @@ import Location from "./location";
 import { useState } from "react";
 import "./style/basic.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const navigate = useNavigate()
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
     propertyType: "",
@@ -75,6 +77,7 @@ const Form = () => {
       });
       console.log(response.data);
       alert("Data Submitted Successfully");
+      navigate("/landing")
     } catch (error) {
       console.error(error);
       alert("error submitting form");
@@ -112,7 +115,7 @@ const Form = () => {
             <button
               className="btn canc"
               onClick={() => {
-                console.log("Form canceled");
+                navigate("/landing");
               }}
             >
               Cancel
