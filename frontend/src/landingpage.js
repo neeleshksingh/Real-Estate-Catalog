@@ -16,7 +16,7 @@ export const Landing = () => {
     }
     const fetchData=()=>{
         let userid = JSON.parse(localStorage.getItem("user"))._id
-        fetch(`http://localhost:3016/get/property/${userid}`).then((data) => {
+        fetch(`https://real-estate-catalog-gp8x.onrender.com/get/property/${userid}`).then((data) => {
           return data.json()
       }).then((data) => {
           setBasicInfo(data?.basicInfo)
