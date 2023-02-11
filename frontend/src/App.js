@@ -7,10 +7,14 @@ import { Home } from "./home";
 import { Landing } from "./landingpage";
 import { Navbar } from "./navbar";
 import { Sidebar } from "./sidebar";
+import { temp } from "./components/context";
+import { useState } from "react";
 
 function App() {
+  const [userinfo,setUserInfo]=useState(null)
   return (
     <div className="App"> 
+     <temp.Provider value={{userinfo,setUserInfo}}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login/>}/>
@@ -20,6 +24,7 @@ function App() {
           <Route path="/home" element={<Home/>}/>
         </Routes>
       </BrowserRouter>
+      </temp.Provider>
     </div>
   );
 }

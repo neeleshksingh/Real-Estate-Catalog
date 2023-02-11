@@ -2,13 +2,11 @@ const routes = require('express').Router()
 const Basic = require('../model/basic-info')
 const bodyParser = require('body-parser')
 routes.use(bodyParser.json())
-routes.get('/property', async (req, res) => {
+routes.get('/property/:id', async (req, res) => {
     try {
-        const basicinfo = await Basic.find();
-
+        const basicinfo = await Basic.find({user:req.params.id});
         res.status(200).json({
             basicInfo: basicinfo,
-
         })
     } catch (e) {
         res.status(204).send({
@@ -16,7 +14,6 @@ routes.get('/property', async (req, res) => {
             message: e.message
         })
     }
-
 })
 
 routes.get('/search/:id', async (req, res) => {

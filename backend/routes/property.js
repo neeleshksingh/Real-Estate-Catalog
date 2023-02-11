@@ -61,57 +61,6 @@ router.post('/register', async (req, res) => {
 });
 
 
-
-/*
-router.post('/register', async (req, res) => {
-  try {
-    const { mailID, password } = req.body;
-
-    if (!mailID || !password) {
-      return res.status(404).json({
-        status: "failed",
-        error: "enter all fields"
-      })
-    }
-    const existemail = await UUser.findOne({ mailID: mailID })
-    const user_name = await UUser.findOne({ password: password })
-    if (existemail) {
-      return res.status(422).json({
-        status: "signup failed",
-        error: "email already exist"
-      })
-    }
-    if (user_name) {
-      return res.status(422).json({
-        status: "signup failed",
-        error: "username already exist"
-      })
-    }
-    else {
-      bcrypt.hash(password, 10, async (err, hashedPass) => {
-        if (err) {
-          return res.status(409).json({
-            status: "failed",
-            message: err.message
-          })
-        }
-        const data = await UUser.create({
-          mailID,
-          password: hashedPass
-        })
-        return res.status(200).json({
-          status: "success",
-          message: "signup successfully",
-          data,
-        })
-      })
-    }
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});*/
-
-
 //Post api for login
 
 router.post('/login', async (req, res) => {
@@ -136,10 +85,10 @@ router.post('/login', async (req, res) => {
       }
       if (result) {
         const token = jwt.sign({ _id: userData.id }, jwt_token)
-        const { _id, mailID, password } = userData
+        const { _id, mailID, password, customId } = userData
         return res.json({
           token: token,
-          user: { _id, mailID, password },
+          user: { _id, mailID, password, customId },
           message: "user logged in successully"
         })
       }

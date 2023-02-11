@@ -99,7 +99,7 @@ const Form = () => {
         </div>
       </div>
       <div className="container">
-        <div className="body">{PageDisplay()}</div>
+        <div className="body">{PageDisplay()}
         <div className="footer">
           {page !== 0 && (
             <button
@@ -135,7 +135,8 @@ const Form = () => {
               ? "Add Property"
               : "Save & Continue"}
           </button>
-        </div>
+        </div></div>
+        
       </div>
     </div>
   );

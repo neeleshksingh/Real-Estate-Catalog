@@ -15,7 +15,8 @@ export const Landing = () => {
         // console.log(search)
     }
     const fetchData=()=>{
-        fetch('http://localhost:3016/get/property').then((data) => {
+        let userid = JSON.parse(localStorage.getItem("user"))._id
+        fetch(`http://localhost:3016/get/property/${userid}`).then((data) => {
           return data.json()
       }).then((data) => {
           setBasicInfo(data?.basicInfo)
