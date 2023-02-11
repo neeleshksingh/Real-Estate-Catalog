@@ -1,9 +1,11 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import './style/login.css'
+import { createContext } from "react";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { Navbar } from "../navbar";
 import axios from "axios";
-
+export const temp=createContext()
 const Login = () =>{
     const [data,setData]= useState({mailID:'', password:''})
     const [error, setError] = useState('');
@@ -33,8 +35,9 @@ const Login = () =>{
 
     }
     const handleReg = () =>{
-        navigate("/register")
+        navigate("/landing")
     }
+   
     
     return(
         <div className="login">
@@ -55,10 +58,12 @@ const Login = () =>{
                 </div>
                 { error && <div className="error">{error}</div> }
             </div>
+            <temp.Provider value={data}><Navbar data={data}/></temp.Provider>
             <div>
                 <p className="font">Don’t have an account? <span className="signup font" onClick={handleReg}>Sign up</span></p>
             </div>
         </div>
+
     )
 }
 export default Login
