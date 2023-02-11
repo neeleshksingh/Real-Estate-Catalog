@@ -12,33 +12,34 @@ const Register = () =>{
     confirmpassword: "",
   });
   const [error,setError]=useState(false)
-useEffect(()=>{
-  if(isloggedin)
-  {
-    navigate('/')
-  }
-})
 console.log(val)
   
-  const registers=async()=>{
-    let verify = val.password.length!==0 && val.mailID.length!==0 && val.confirmpassword.length!==0
-    if(val.password === val.confirmpassword && verify)
-    {
-    setError(false)
-    let data=await axios.post('http://localhost:3016/register', val)
-    localStorage.setItem('userdetails',JSON.stringify(data.data.userInfo))
-    localStorage.setItem('token',JSON.stringify(data.data.token))
-    setVal({
-        userID: "",
-        password: "",
-        confirmpassword: ""
-      })
-      navigate("/")
+const registers = async () => {
+  let verify = val.password.length !== 0 && val.mailID.length !== 0 && val.confirmpassword.length !== 0;
+  if (val.password === val.confirmpassword && verify) {
+    setError(false);
+    try {
+      let data = await axios.post('http://localhost:3016/register', val);
+      if (data.data.status === "signup failed") {
+        alert(data.data.error);
+      } else {
+        localStorage.setItem('userdetails', JSON.stringify(data.data.userInfo));
+        localStorage.setItem('token', JSON.stringify(data.data.token));
+        setVal({
+          userID: "",
+          password: "",
+          confirmpassword: ""
+        });
+        navigate("/");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Userid Exists")
     }
-    else{
-        setError(true)
-    }
+  } else {
+    setError(true);
   }
+};
     
     return(
         <div className="login">
@@ -58,8 +59,8 @@ console.log(val)
                 <div className="btn-field flexing">
                     <button id="signin" onClick={registers}>Sign up</button>
                 </div>
-                {error && <div>All fields are mandatory</div>}
-          {val.password.length!==0 && val.password!== val.confirmpassword ?<div>The password must be same</div>: null}
+                {error && <div className="err-1">*All fields are mandatory</div>}
+          {val.password.length!==0 && val.password!== val.confirmpassword ?<div className="err-1">The password must be same</div>: null}
             </div>
             <div>
                 <p><span id="sgnup" className="signup font" onClick={()=>{navigate('/')}}>Sign in</span></p>

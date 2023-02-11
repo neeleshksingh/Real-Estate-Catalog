@@ -1,25 +1,34 @@
 import './components/style/navbar.css'
+import {useContext, useState} from "react"
+import {temp} from './components/context'
+import Logout from './components/logout'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+
 export const Navbar=()=>{
+    const {userinfo,setUserInfo}=useContext(temp)
+    console.log(userinfo)
+    const [display, setDisplay] = useState(false)
+    const handleLogout = () =>{
+       setDisplay(!display)
+    }
     return(
         <div>
             <div className="nav">
                 <div>
-                    USER ID:
+                    USER ID: {userinfo?.customId}
                 </div>
                 <div className="username">
                     <div>
-                    <img src="https://img.icons8.com/small/16/000000/gender-neutral-user.png"/>
+                    <PermIdentityIcon/>
                     </div>
-                    <div>
-                        User Name:
-                        <select>
-                            <option></option>
-                            <option>edit details</option>
-
-                        </select>
+                    <div className='user-name'>
+                        <p>User Name:</p> {userinfo?.mailID} <ArrowDropDownIcon className='user-name' sx={{fontSize:30}} onClick={handleLogout}/>
+                        {display ? <Logout/>: null}
                     </div>
                 </div>
             </div>
+            <hr className='hr' />
         </div>
     )
 }
