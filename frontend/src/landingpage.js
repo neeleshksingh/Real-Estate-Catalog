@@ -11,7 +11,7 @@ export const Landing = () => {
     const [search,setSeacrhResult]=useState(null)
     const Search = async () => {
         let data = basicInfo
-        data.forEach(data => { if (data._id === PPID) setSeacrhResult([data]) })
+        data.forEach(data => { if (data._id === PPID.toUpperCase()) setSeacrhResult([data]) })
         // console.log(search)
     }
     const fetchData=()=>{

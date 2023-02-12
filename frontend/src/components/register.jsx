@@ -6,6 +6,7 @@ import axios from "axios";
 const Register = () =>{
   const navigate = useNavigate();
   const isloggedin= localStorage.getItem('userdetails')
+  const [loader, setLoader] = useState(false);
   const [val, setVal] = useState({
     mailID: "",
     password: "",
@@ -18,7 +19,9 @@ const registers = async () => {
   let verify = val.password.length !== 0 && val.mailID.length !== 0 && val.confirmpassword.length !== 0;
   if (val.password === val.confirmpassword && verify) {
     setError(false);
+    setLoader(true);
     try {
+      setLoader(true);
       let data = await axios.post('https://real-estate-catalog-gp8x.onrender.com/register', val);
       if (data.data.status === "signup failed") {
         alert(data.data.error);
@@ -34,13 +37,21 @@ const registers = async () => {
       }
     } catch (error) {
       console.error(error);
+      setLoader(false);
       alert("Userid Exists")
     }
   } else {
+    setLoader(false);
     setError(true);
   }
 };
-    
+if (loader) {
+  return (
+    <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center',margin:'15% 15% 15% 15%',}}>
+        <img src={ "https://cdn.dribbble.com/users/241526/screenshots/954930/loader.gif" } alt="loading-gif" width='30%' height='30%' />
+    </div>
+)
+} 
     return(
         <div className="login">
             <div id="container">
