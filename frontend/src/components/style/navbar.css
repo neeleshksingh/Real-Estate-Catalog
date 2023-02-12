@@ -8,11 +8,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 7em;
+    height: 6em;
     justify-items: center;
     font-weight: 600;
     color:#AAAAAA;
     box-shadow: 2px 2px 2px#808fa0;
+    font-size: 20px;
 }
 .username{
     display: flex;
@@ -22,6 +23,7 @@
 .user-name{
     display: flex;
     gap: 4px;
+
 }
 .hr{
     width: 100%;

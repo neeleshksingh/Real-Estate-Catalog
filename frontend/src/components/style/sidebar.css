@@ -2,15 +2,12 @@
 *{
     font-family: 'Source Sans Pro', sans-serif;
 }
-/* img{
-    opacity: 0.5;
-} */
 .main-sidebar{
-        height: 100%; /* Full-height: remove this if you want "auto" height */
-        width: 18%; /* Set the width of the sidebar */
-        position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-        z-index: 1; /* Stay on top */
-        top: 0; /* Stay at the top */
+        height: 100%;
+        width: 18%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
         left: 0;
         background-color:#b9e9e3;
         text-align: center;
