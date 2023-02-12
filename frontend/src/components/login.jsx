@@ -1,12 +1,37 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import './style/login.css'
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import axios from "axios";
-
+import './style/register.css'
+import axios from "axios"
 const Login = () =>{
+
+    let Navigate = useNavigate();
+    let handler = () => {
+        Navigate("/register")
+    }
+   /*
+    const [userid, setUserid] = useState("");
+    const [password, setPassword] = useState("");
+
+    async function fetchdata() {
+
+        const responce = await fetch("http://localhost:3016/login", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+
+            },
+            body: JSON.stringify({
+                userid, password
+            })
+
+        })
+        var data = await responce.json();
+        if (data.che === "invalid") {
+            alert("enter valid details")
+        }
+
+    }*/
     const [data,setData]= useState({mailID:'', password:''})
-    const [error, setError] = useState('');
     const navigate = useNavigate()
     const handleLogin =  async()=>{
         try{
@@ -24,42 +49,31 @@ const Login = () =>{
      }
      else
      {
-        setError('*All fields are madnatory')
+       alert('*All fields are madnatory')
      }
     }catch (error) {
-        console.log(error)
-        setError(error.response.data.message);
+        alert(error.response.data.message);
      }
 
     }
-    const handleReg = () =>{
-        navigate("/register")
-    }
-    
-    return(
-        <div className="login">
-            <div id="container">
-                <div className="head flexing">
-                    <h1 className="font h1">Logo</h1>
-                    <p className="font p1">Enter your credentials to access your account</p>
+    return (<>
+        <nav>
+            <div id="Container">
+                <div id='childcontainer'>
+                    <div id='formcontent' >
+                        <h2 id='Logo'>Logo</h2>
+                        <p id='create' style={{ color: 'blue' }}>Enter your credentials to access your account</p>
+                        <input type={'Text'} placeholder='User ID' value={data.mailID} onChange={e=>setData({...data,mailID:e.target.value})} ></input>
+                        <input type={'password'} placeholder='Password' value={data.password} onChange={e=>setData({...data,password:e.target.value})}></input>
+                        <button onClick={handleLogin} >   Sign In   </button>
+                        <p id="signeup" onClick={ handler}>Sign Up</p>
+                    </div>
+ 
                 </div>
-                <div className="inp-field flexing">
-                    <input type="text" className="inp" placeholder="User ID" value={data.mailID} onChange={e=>setData({...data,mailID:e.target.value})} />
-                    <input type="password" className="inp" placeholder="Password" value={data.password} onChange={e=>setData({...data,password:e.target.value})}/>
-                  <span>{<VisibilityOffIcon className="eye"/>}</span>
-                </div>
-                <div className="btn-field flexing">
-                    <button id="signin" onClick={handleLogin}>Sign in</button>
-                    <span className="signup font" onClick={handleReg}>Sign Up</span>
-                    
-                </div>
-                { error && <div className="error">{error}</div> }
+                <p id="c"> <span id="dont" >Don't have an account?  </span> <span id="dontp" onClick={ handler}> signeup </span> </p>
             </div>
-            <div>
-                <p className="font">Don’t have an account? <span className="signup font" onClick={handleReg}>Sign up</span></p>
-            </div>
-        </div>
-    )
+        </nav>
+    </>)
 }
 export default Login
 
