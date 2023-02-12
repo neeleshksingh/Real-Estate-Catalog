@@ -23,7 +23,7 @@ export const Navbar=()=>{
                     <PermIdentityIcon/>
                     </div>
                     <div className='user-name'>
-                        <p>User Name:</p> {userinfo?.mailID} <ArrowDropDownIcon className='user-name' sx={{fontSize:30}} onClick={handleLogout}/>
+                        {userinfo?.mailID} <ArrowDropDownIcon className='user-name' sx={{fontSize:30}} onClick={handleLogout}/>
                         {display ? <Logout/>: null}
                     </div>
                 </div>
