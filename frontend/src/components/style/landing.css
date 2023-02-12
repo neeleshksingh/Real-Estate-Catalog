@@ -24,7 +24,12 @@ button{
     font-size: 20px;
     line-height: 25px;
     color: white;
+    transition: transform .2s;
 }
+.add-prop:hover{
+    transform: scale(1.1);
+}
+
 .inp-ser{
     height: 60px;
     width: 377px;
