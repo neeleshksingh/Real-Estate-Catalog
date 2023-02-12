@@ -12,9 +12,11 @@ const basicInfoSchema = new Schema({
     area: { type: Number },
     views: { type: Number, default: Math.floor(Math.random() * 100) },
     ppd: { type: String },
+    status:{type:String,default:"unsold"},
     user: { type: ObjectId, ref: 'User', required: false }
 }, { timestamps: true });
 
 const BInfo = mongoose.model('Basic', basicInfoSchema)
+
 
 module.exports = BInfo

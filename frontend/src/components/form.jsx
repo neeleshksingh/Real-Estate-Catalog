@@ -5,8 +5,10 @@ import Location from "./location";
 import { useState } from "react";
 import "./style/basic.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const navigate = useNavigate()
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
     propertyType: "",
@@ -17,7 +19,7 @@ const Form = () => {
     propertyApprov: "",
     bankLoan: "",
     length: "",
-    totalArea: "",
+    Area: "",
     noofBhk: "",
     noofFloor: "",
     breath: "",
@@ -58,21 +60,24 @@ const Form = () => {
   const handleSubmit = async () => {
     try {
       let user = JSON.parse(localStorage.getItem("user"))._id;
-      const { propertyType, mobile, ppd, area } = formData;
+      const { propertyType, mobile, ppd, area, length, breath } = formData;
       
-      if (!propertyType || !mobile || !ppd || !area) {
+      if (!propertyType || !mobile || !ppd || !area || !length || !breath) {
         alert("Please fill out all the required fields marked with * before submitting the form.");
         return;
       }
-      const response = await axios.post("http://localhost:3016/basic", {
+      const response = await axios.post("https://real-estate-catalog-gp8x.onrender.com/basic", {
         propertyType,
         mobile,
         ppd,
         area,
+        length,
+        breath,
         user,
       });
       console.log(response.data);
       alert("Data Submitted Successfully");
+      navigate("/landing")
     } catch (error) {
       console.error(error);
       alert("error submitting form");
@@ -94,7 +99,7 @@ const Form = () => {
         </div>
       </div>
       <div className="container">
-        <div className="body">{PageDisplay()}</div>
+        <div className="body">{PageDisplay()}
         <div className="footer">
           {page !== 0 && (
             <button
@@ -110,7 +115,7 @@ const Form = () => {
             <button
               className="btn canc"
               onClick={() => {
-                console.log("Form canceled");
+                navigate("/landing");
               }}
             >
               Cancel
@@ -130,7 +135,8 @@ const Form = () => {
               ? "Add Property"
               : "Save & Continue"}
           </button>
-        </div>
+        </div></div>
+        
       </div>
     </div>
   );

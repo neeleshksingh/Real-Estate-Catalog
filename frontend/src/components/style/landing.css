@@ -1,0 +1,50 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+.header{
+    margin-left: 25%;
+    display: flex;
+    justify-content:space-between ;
+    height: 6em;
+    align-items: center;
+    padding: 15px;
+}
+button{
+    cursor: pointer;
+}
+.add-prop{
+    background: #6AB4F8;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.13);
+    border-radius: 500px;
+    width: 187px;
+    height: 60px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    color: white;
+}
+.inp-ser{
+    height: 60px;
+    width: 377px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 20%);
+    padding-left: 34px;
+}
+.inp-ser:focus{
+    outline: none;
+}
+.ser-btn{
+    height: 60px;
+    width: 59px;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    border: none;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 20%);
+    position: relative;
+    right: 13%;
+}
+
+  

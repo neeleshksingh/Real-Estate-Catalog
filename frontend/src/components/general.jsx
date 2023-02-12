@@ -31,8 +31,8 @@ const General = ({ formData, setFormData }) => {
               <option value="" disable selected hidden>
                 Posted By
               </option>
-              <option value="1">Owner</option>
-              <option value="2">Agent</option>
+              <option value="Owner">Owner</option>
+              <option value="Agent">Agent</option>
             </select>
           </div>
           <div className="flex">
@@ -94,24 +94,30 @@ const General = ({ formData, setFormData }) => {
               <option value="" disable selected hidden>
                 Please Select
               </option>
-              <option value="1">Land</option>
-              <option value="2">Residential</option>
-              <option value="3">Commercial</option>
-              <option value="4">Industrial</option>
+              <option value="Land">Land</option>
+              <option value="Residential">Residential</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Industrial">Industrial</option>
             </select>
           </div>
           <div className="flex">
             <label htmlFor="bLoan">*PPD Package</label>
             <br />
-            <input
-              type="text"
-              className="inp"
-              placeholder="Please Select"
+            <select
+              className="pApproved inp"
               value={formData.ppd}
               onChange={(event) =>
                 setFormData({ ...formData, ppd: event.target.value })
               }
-            />
+            >
+              <option value="" disable selected hidden>
+                Please Select
+              </option>
+              <option value="PKG-1">PKG-1</option>
+              <option value="PKG-2">PKG-2</option>
+              <option value="PKG-3">PKG-3</option>
+              <option value="PKG-4">PKG-4</option>
+            </select>
           </div>
         </div>
       </form>
