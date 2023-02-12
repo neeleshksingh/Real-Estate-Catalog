@@ -2,15 +2,19 @@ import "./style/basic.css";
 
 const Property = ({ formData, setFormData }) => {
   const handleLengthChange = (event) => {
-    const length = event.target.value;
-    const area = length * formData.breath;
-    setFormData({ ...formData, length, area });
+    const length = parseInt(event.target.value, 10);
+    if (length >= 0) {
+      const area = length * formData.breath;
+      setFormData({ ...formData, length, area });
+    }
   };
 
   const handleBreathChange = (event) => {
-    const breath = event.target.value;
-    const area = formData.length * breath;
-    setFormData({ ...formData, breath, area });
+    const breath = parseInt(event.target.value, 10);
+    if (breath >= 0) {
+      const area = formData.length * breath;
+      setFormData({ ...formData, breath, area });
+    }
   };
   return (
     <div>
