@@ -39,8 +39,8 @@ routes.put('/updatestatus/:id', async (req, res) => {
                     console.log(docs)
                 }
             });
-        JSON.parse(docs)
-        res.json(docs)
+        JSON.parse(data)
+        res.json(data)
     } catch (e) {
         res.status(204).json({
             message: e.message
