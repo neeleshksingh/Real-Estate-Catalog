@@ -7,6 +7,7 @@ import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 
 export const Navbar=()=>{
     const {userinfo,setUserInfo}=useContext(temp)
+    let user = JSON.parse(localStorage.getItem("user"))._id;
     console.log(userinfo)
     const [display, setDisplay] = useState(false)
     const handleLogout = () =>{
@@ -23,7 +24,7 @@ export const Navbar=()=>{
                     <PermIdentityIcon/>
                     </div>
                     <div className='user-name'>
-                        <p>User Name:</p> {userinfo?.mailID} <ArrowDropDownIcon className='user-name' sx={{fontSize:30}} onClick={handleLogout}/>
+                        {userinfo?.mailID} <ArrowDropDownIcon className='user-name' sx={{fontSize:30}} onClick={handleLogout}/>
                         {display ? <Logout/>: null}
                     </div>
                 </div>

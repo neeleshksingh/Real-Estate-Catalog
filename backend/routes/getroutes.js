@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 routes.use(bodyParser.json())
 routes.get('/property/:id', async (req, res) => {
     try {
-        const basicinfo = await Basic.find({user:req.params.id});
+        const basicinfo = await Basic.find({ user: req.params.id });
         res.status(200).json({
             basicInfo: basicinfo,
         })

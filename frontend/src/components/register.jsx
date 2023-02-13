@@ -6,19 +6,24 @@ import axios from "axios";
 const Register = () =>{
   const navigate = useNavigate();
   const isloggedin= localStorage.getItem('userdetails')
+  const [loader, setLoader] = useState(false);
   const [val, setVal] = useState({
     mailID: "",
     password: "",
     confirmpassword: "",
   });
   const [error,setError]=useState(false)
+  const [passwordError, setPasswordError] = useState(false);
 console.log(val)
   
 const registers = async () => {
   let verify = val.password.length !== 0 && val.mailID.length !== 0 && val.confirmpassword.length !== 0;
-  if (val.password === val.confirmpassword && verify) {
+  if (val.password.length >= 5 && val.password.length <= 10 && val.password === val.confirmpassword && verify) {
     setError(false);
+    setPasswordError(false);
+    setLoader(true);
     try {
+      setLoader(true);
       let data = await axios.post('https://real-estate-catalog-gp8x.onrender.com/register', val);
       if (data.data.status === "signup failed") {
         alert(data.data.error);
@@ -34,13 +39,24 @@ const registers = async () => {
       }
     } catch (error) {
       console.error(error);
+      setLoader(false);
       alert("Userid Exists")
     }
   } else {
+    setLoader(false);
     setError(true);
+    if (val.password.length < 5 || val.password.length > 10) {
+      setPasswordError(true);
+      }
   }
 };
-    
+if (loader) {
+  return (
+    <div style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center',margin:'15% 15% 15% 15%',}}>
+        <img src={ "https://cdn.dribbble.com/users/241526/screenshots/954930/loader.gif" } alt="loading-gif" width='30%' height='30%' />
+    </div>
+)
+} 
     return(
         <div className="login">
             <div id="container">
@@ -60,6 +76,7 @@ const registers = async () => {
                     <button id="signin" onClick={registers}>Sign up</button>
                 </div>
                 {error && <div className="err-1">*All fields are mandatory</div>}
+                {passwordError &&  <div className="err-1">*password must be in the range of 5-10 characters</div>}
           {val.password.length!==0 && val.password!== val.confirmpassword ?<div className="err-1">The password must be same</div>: null}
             </div>
             <div>

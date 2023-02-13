@@ -11,7 +11,9 @@ const Login = () =>{
     const [data,setData]= useState({mailID:'', password:''})
     const [error, setError] = useState('');
     const navigate = useNavigate()
+    const [loader, setLoader] = useState(false);
     const handleLogin =  async()=>{
+        setLoader(true);
         try{
         if(data.mailID && data.password)
      {
@@ -23,14 +25,17 @@ const Login = () =>{
        console.log(user)
        setUserInfo(user.data.user)
        setData({mailID:'', password:''})
+       setLoader(false);
        navigate('/landing')
        }
      }
      else
      {
+        setLoader(false);
         setError('*All fields are madnatory')  
      }
     }catch (error) {
+        setLoader(false);
         console.log(error)
         setError("*User not found");
      }
@@ -47,7 +52,13 @@ const Login = () =>{
             setShow("text")
         }
     }
-
+    if (loader) {
+        return (
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', margin: '15% 15% 15% 15%', }}>
+                <img src={"https://cdn.dribbble.com/users/241526/screenshots/954930/loader.gif"} alt="loading-gif" width='30%' height='30%' />
+            </div>
+        )
+    } 
     return(
         <temp.Provider value={data}>
         <div className="login">
