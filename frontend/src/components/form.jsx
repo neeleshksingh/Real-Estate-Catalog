@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 const Form = () => {
   const navigate = useNavigate()
   const [page, setPage] = useState(0);
+  const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     propertyType: "",
     price: "",
@@ -59,6 +60,9 @@ const Form = () => {
   };
   const handleSubmit = async () => {
     try {
+      if (submitted) return;
+
+      setSubmitted(true);
       let user = JSON.parse(localStorage.getItem("user"))._id;
       const { propertyType, mobile, ppd, area, length, breath } = formData;
       console.log(user);
@@ -81,6 +85,8 @@ const Form = () => {
     } catch (error) {
       console.error(error);
       alert("error submitting form");
+    }finally {
+      setSubmitted(false);
     }
   };
   
