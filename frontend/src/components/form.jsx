@@ -61,7 +61,7 @@ const Form = () => {
     try {
       let user = JSON.parse(localStorage.getItem("user"))._id;
       const { propertyType, mobile, ppd, area, length, breath } = formData;
-      
+      console.log(user);
       if (!propertyType || !mobile || !ppd || !area || !length || !breath) {
         alert("Please fill out all the required fields marked with * before submitting the form.");
         return;
@@ -83,6 +83,7 @@ const Form = () => {
       alert("error submitting form");
     }
   };
+  
 
   return (
     <div className="main">

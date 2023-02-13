@@ -13,12 +13,14 @@ const Register = () =>{
     confirmpassword: "",
   });
   const [error,setError]=useState(false)
+  const [passwordError, setPasswordError] = useState(false);
 console.log(val)
   
 const registers = async () => {
   let verify = val.password.length !== 0 && val.mailID.length !== 0 && val.confirmpassword.length !== 0;
-  if (val.password === val.confirmpassword && verify) {
+  if (val.password.length >= 5 && val.password.length <= 10 && val.password === val.confirmpassword && verify) {
     setError(false);
+    setPasswordError(false);
     setLoader(true);
     try {
       setLoader(true);
@@ -43,6 +45,9 @@ const registers = async () => {
   } else {
     setLoader(false);
     setError(true);
+    if (val.password.length < 5 || val.password.length > 10) {
+      setPasswordError(true);
+      }
   }
 };
 if (loader) {
@@ -71,6 +76,7 @@ if (loader) {
                     <button id="signin" onClick={registers}>Sign up</button>
                 </div>
                 {error && <div className="err-1">*All fields are mandatory</div>}
+                {passwordError &&  <div className="err-1">*password must be in the range of 5-10 characters</div>}
           {val.password.length!==0 && val.password!== val.confirmpassword ?<div className="err-1">The password must be same</div>: null}
             </div>
             <div>

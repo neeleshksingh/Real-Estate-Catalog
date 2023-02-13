@@ -7,6 +7,7 @@ import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 
 export const Navbar=()=>{
     const {userinfo,setUserInfo}=useContext(temp)
+    let user = JSON.parse(localStorage.getItem("user"))._id;
     console.log(userinfo)
     const [display, setDisplay] = useState(false)
     const handleLogout = () =>{
