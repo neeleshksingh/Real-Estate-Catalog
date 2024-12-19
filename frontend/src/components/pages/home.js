@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import './components/style/prperty.css';
-import { Environment } from './environment/env'
+import '../style/prperty.css';
+import { Environment } from '../../environment/env'
 
 
 export const Home = (props) => {

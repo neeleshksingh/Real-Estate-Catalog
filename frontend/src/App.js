@@ -1,14 +1,11 @@
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Form from "./components/form";
-import Login from "./components/login";
-import Register from "./components/register"
-import { Home } from "./home";
-import { Landing } from "./landingpage";
-import { Navbar } from "./navbar";
-import { Sidebar } from "./sidebar";
 import { temp } from "./components/context";
 import { useState } from "react";
+import Login from "./components/auth/login";
+import Register from './components/auth/register';
+import { Landing } from "./components/pages/landingpage";
+import { Home } from "./components/pages/home";
 
 function App() {
   const [userinfo,setUserInfo]=useState(null)

@@ -1,11 +1,11 @@
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
-import './style/login.css'
+import '../style/login.css'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import axios from "axios";
-import { temp } from "./context";
-import { Environment } from "../environment/env";
-import logo from '../image/logo.png'
+import { temp } from "../context";
+import { Environment } from "../../environment/env";
+import logo from '../../assets/image/logo.png'
 
 const Login = () => {
     const [show, setShow] = useState("password")

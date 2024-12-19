@@ -3,7 +3,7 @@ import General from "./general";
 import Property from "./property";
 import Location from "./location";
 import { useState } from "react";
-import "./style/basic.css";
+import "../style/basic.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 

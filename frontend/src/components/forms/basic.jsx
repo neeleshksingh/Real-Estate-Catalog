@@ -1,4 +1,4 @@
-import "./style/basic.css";
+import "../style/basic.css";
 
 const Basic = ({ formData, setFormData }) => {
   return (

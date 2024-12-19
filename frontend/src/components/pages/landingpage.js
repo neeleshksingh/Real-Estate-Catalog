@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Sidebar } from './sidebar'
-import './components/style/landing.css'
+import '../style/landing.css'
 import { Home } from './home'
 import { Navbar } from './navbar';
 import { Link, useNavigate } from 'react-router-dom';
-import { Environment } from './environment/env';
-import Form from './components/form';
+import { Environment } from '../../environment/env';
+import Form from '../forms/form';
 
 export const Landing = () => {
     const [basicInfo, setBasicInfo] = useState();

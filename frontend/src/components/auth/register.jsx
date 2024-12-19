@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import './style/login.css'
+import '../style/login.css'
 import axios from "axios";
-import { Environment } from "../environment/env";
-import logo from '../image/logo.png'
+import { Environment } from "../../environment/env";
+import logo from '../../assets/image/logo.png'
 
 const Register = () => {
   const navigate = useNavigate();

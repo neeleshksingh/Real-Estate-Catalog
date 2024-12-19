@@ -1,7 +1,7 @@
-import './components/style/navbar.css'
+import '../style/navbar.css'
 import { useContext, useState } from "react"
-import { temp } from './components/context'
-import Logout from './components/logout'
+import { temp } from '../context'
+import Logout from '../auth/logout'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 
