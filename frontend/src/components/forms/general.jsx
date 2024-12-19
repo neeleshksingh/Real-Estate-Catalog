@@ -1,4 +1,4 @@
-import "./style/basic.css";
+import "../style/basic.css";
 
 const General = ({ formData, setFormData }) => {
   return (
@@ -57,12 +57,12 @@ const General = ({ formData, setFormData }) => {
             <div className="cam">
               <img
                 className="cam-logo"
-                src={require("../image/Vector.png")}
+                src={require("../../assets/image/Vector.png")}
                 alt=""
               />
               <img
                 className="cam-logo-1"
-                src={require("../image/vector1.png")}
+                src={require("../../assets/image/vector1.png")}
                 alt=""
               />
             </div>

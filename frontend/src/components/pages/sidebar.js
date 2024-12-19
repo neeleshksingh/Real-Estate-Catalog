@@ -1,15 +1,16 @@
-import './components/style/sidebar.css'
+import '../style/sidebar.css'
 import HomeIcon from '@mui/icons-material/Home';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import PlayForWorkIcon from '@mui/icons-material/PlayForWork';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import logo from '../../assets/image/logo.png'
 
 export const Sidebar = () => {
     return (
         <div className='main-sidebar'>
             <div className='logo-side'>
-                <h1>Logo</h1>
+                <img src={logo} alt="logo" className="logo"/>
             </div>
             <div className='logo-icon'>
                 <div className='side-flex' id='prop-icon'>
@@ -25,7 +26,7 @@ export const Sidebar = () => {
                     <p>Recieved Interest</p>
                 </div>
                 <div className='side-flex-img'>
-                    <img id='side-img' src={require('./components/img/path.png')} alt=""/>
+                    <img id='side-img' src={require('../../assets/img/path.png')} alt=""/>
                     <p>Sent Interest</p>
                 </div>
                 <div className='side-flex'>

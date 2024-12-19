@@ -1,4 +1,4 @@
-import "./style/basic.css";
+import "../style/basic.css";
 
 const Property = ({ formData, setFormData }) => {
   const handleLengthChange = (event) => {
