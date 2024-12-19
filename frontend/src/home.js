@@ -1,17 +1,14 @@
 import { useState, useEffect } from 'react'
 import './components/style/prperty.css';
-import { StatusUpdate } from './components/statusUpdate';
-import { Link } from 'react-router-dom'
+import { Environment } from './environment/env'
 
 
 export const Home = (props) => {
     const [idStatus, setidStatus] = useState({ id: '', status: '' })
     useEffect(() => {
         function statusHandler(id) {
-            // status=="Sold"?setstatus("UnSold"):setstatus("Sold")
-            console.log(idStatus.id)
-            // let id=idStatus.id
-            fetch(`https://real-estate-catalog-gp8x.onrender.com/get/updatestatus/${idStatus.id}`, {
+            const url = Environment().API_URL
+            fetch(`${url}/get/updatestatus/${idStatus.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify({ status: idStatus.status })
@@ -30,8 +27,6 @@ export const Home = (props) => {
 
     return (
         <div className="property">
-
-
             <table className='table'>
                 <thead>
                     <tr>
@@ -56,9 +51,17 @@ export const Home = (props) => {
                                 <td>{values.mobile}</td>
                                 <td>{values.area}</td>
                                 <td>{values.views}</td>
-
-                                <td><button className='status' onClick={() => { setidStatus({ id: values._id, status: values.status }) }}>{values.status}</button></td>
-                                <td>{values.status=='unsold'?Math.floor(Math.random() * 100):"00"}</td>
+                                <td>
+                                    <button
+                                        className={`status ${values.status === "unsold" ? "green" : "red"}`}
+                                        onClick={() => {
+                                            setidStatus({ id: values._id, status: values.status });
+                                        }}
+                                    >
+                                        {values.status}
+                                    </button>
+                                </td>
+                                <td>{values.status == 'unsold' ? Math.floor(Math.random() * 100) : "00"}</td>
                                 <td><img src="https://img.icons8.com/small/16/000000/visible.png" /><img src="https://img.icons8.com/small/16/000000/pencil-tip.png" /></td>
                             </tr>
                         )

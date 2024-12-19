@@ -1,41 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600;700&display=swap');
-*{
+
+* {
     font-family: 'Source Sans Pro', sans-serif;
 }
-.main-sidebar{
-        height: 100%;
-        width: 18%;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color:#b9e9e3;
-        text-align: center;
-      }
-.logo-side{
+
+.main-sidebar {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #b9e9e3;
+    text-align: center;
+}
+
+.logo-side {
     width: 100%;
-    height: 7rem;
+    height: 10rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 44px;
 }
-.logo-icon{
+
+.logo-icon {
     width: 100%;
     height: 100vh;
-    padding-top: 50px;
+    padding-top: 30px;
     display: flex;
     flex-direction: column;
     gap: 51.5px;
 }
-#prop-icon{
+
+#prop-icon {
     color: #2289FF;
 }
-.side-flex{
+
+.side-flex {
     display: flex;
     gap: 20px;
     align-items: center;
@@ -47,11 +48,13 @@
     margin-left: 12%;
     color: #AAAAAA;
 }
-#side-img{
+
+#side-img {
     height: 17px;
     margin-left: 5px;
 }
-.side-flex-img{
+
+.side-flex-img {
     display: flex;
     gap: 27px;
     align-items: center;

@@ -4,12 +4,13 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import PlayForWorkIcon from '@mui/icons-material/PlayForWork';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import logo from './image/logo.png'
 
 export const Sidebar = () => {
     return (
         <div className='main-sidebar'>
             <div className='logo-side'>
-                <h1>Logo</h1>
+                <img src={logo} alt="logo" className="logo"/>
             </div>
             <div className='logo-icon'>
                 <div className='side-flex' id='prop-icon'>

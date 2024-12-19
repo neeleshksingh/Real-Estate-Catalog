@@ -61,16 +61,14 @@ const Form = () => {
   const handleSubmit = async () => {
     try {
       if (submitted) return;
-
       setSubmitted(true);
       let user = JSON.parse(localStorage.getItem("user"))._id;
       const { propertyType, mobile, ppd, area, length, breath } = formData;
-      //console.log(user);
       if (!propertyType || !mobile || !ppd || !area || !length || !breath) {
         alert("Please fill out all the required fields marked with * before submitting the form.");
         return;
       }
-      const response = await axios.post("https://real-estate-catalog-gp8x.onrender.com/basic", {
+      const response = await axios.post("url/basic", {
         propertyType,
         mobile,
         ppd,
@@ -79,11 +77,10 @@ const Form = () => {
         breath,
         user,
       });
-      console.log(response.data);
+
       alert("Data Submitted Successfully");
       navigate("/landing")
     } catch (error) {
-      console.error(error);
       alert("error submitting form");
     }finally {
       setSubmitted(false);
@@ -142,8 +139,8 @@ const Form = () => {
               ? "Add Property"
               : "Save & Continue"}
           </button>
-        </div></div>
-        
+        </div>
+        </div>
       </div>
     </div>
   );

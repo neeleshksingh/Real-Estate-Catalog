@@ -1,16 +1,42 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
-.header{
-    margin-left: 25%;
-    display: flex;
-    justify-content:space-between ;
-    height: 6em;
-    align-items: center;
-    padding: 15px;
+
+.landing {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto;
+    height: 100vh;
+    width: 100%;
+    gap: 0;
 }
-button{
+
+.sidebar-section {
+    grid-column: 1;
+}
+
+.main-section {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.home-div {
+    height: -webkit-fill-available;
+    padding: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+button {
     cursor: pointer;
 }
-.add-prop{
+
+.add-prop {
     background: #6AB4F8;
     box-shadow: 0px 10px 25px rgba(0, 0, 0, 25%);
     border-radius: 500px;
@@ -26,11 +52,12 @@ button{
     color: white;
     transition: transform .2s;
 }
-.add-prop:hover{
+
+.add-prop:hover {
     transform: scale(1.1);
 }
 
-.inp-ser{
+.inp-ser {
     height: 60px;
     width: 377px;
     border-radius: 50px;
@@ -39,10 +66,12 @@ button{
     padding-left: 34px;
     font-size: 20px;
 }
-.inp-ser:focus{
+
+.inp-ser:focus {
     outline: none;
 }
-.ser-btn{
+
+.ser-btn {
     height: 60px;
     width: 59px;
     border-bottom-right-radius: 50px;
@@ -56,4 +85,12 @@ button{
     font-size: 20px;
 }
 
-  
+.status.green {
+    background-color: #32de84;
+    color: white;
+}
+
+.status.red {
+    background-color: #dc3545;
+    color: white;
+}

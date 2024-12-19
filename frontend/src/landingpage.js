@@ -3,61 +3,76 @@ import { Sidebar } from './sidebar'
 import './components/style/landing.css'
 import { Home } from './home'
 import { Navbar } from './navbar';
-import {Link, useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Environment } from './environment/env';
+import Form from './components/form';
 
 export const Landing = () => {
     const [basicInfo, setBasicInfo] = useState();
     const [PPID, setPPID] = useState()
-    const [search,setSeacrhResult]=useState(null)
+    const [search, setSeacrhResult] = useState(null);
+
+    const nav = useNavigate();
+
     const Search = async () => {
-        let data = basicInfo
-        data.forEach(data => { if (data._id === PPID.toUpperCase()) setSeacrhResult([data]) })
-        // console.log(search)
+        let data = basicInfo;
+        data?.forEach(data => { if (data._id === PPID?.toUpperCase()) setSeacrhResult([data]) });
     }
-    const fetchData=()=>{
-        let userid = JSON.parse(localStorage.getItem("user"))._id
-        fetch(`https://real-estate-catalog-gp8x.onrender.com/get/property/${userid}`).then((data) => {
-          return data.json()
-      }).then((data) => {
-          setBasicInfo(data?.basicInfo)
-          // console.log(basicInfo)
-      }).catch((err) => {
-          console.log(err)
-      });
-      }
+    const fetchData = () => {
+        let userid = JSON.parse(localStorage.getItem("user"))._id;
+        const url = Environment().API_URL;
+        fetch(`${url}/get/property/${userid}`).then((data) => {
+            return data.json()
+        }).then((data) => {
+            setBasicInfo(data?.basicInfo);
+        }).catch((err) => {
+        });
+    }
     useEffect(() => {
-        
         fetchData();
         Search();
-    }, [])
+    }, []);
+
+    const addProperty = () => {
+        nav('/landing/form');
+    }
+    const goBack = () => {
+        nav('/landing');
+    }
+
+    const currentPath = window.location.pathname;
+
     return (
-        <div>
-
-            <div className='landing'>
+        <div className='landing'>
+            <section className='sidebar-section'>
                 <Sidebar />
-
-                <div>
+            </section>
+            <section className='main-section'>
+                <div className='navbar-div'>
                     <Navbar />
-                    
+                </div>
+                <div className='home-div'>
                     <header className='header'>
-                    <div class="search-container">
+                        <div className="search-container">
                             <input className="inp-ser" onChange={(e) => { setPPID(e.target.value) }} value={PPID} type="text" placeholder="Search PPD ID" name="search" />
-                            <button className="ser-btn" onClick={Search} type="submit"><i class="fa fa-search"></i></button>
-                    </div>
+                            <button className="ser-btn" onClick={Search} type="submit"><i className="fa fa-search"></i></button>
+                        </div>
                         <div>
-                            <Link to="/form">
-                                <button className="add-prop">+ Add Property</button>
-                            </Link>
+                            {currentPath === '/landing' ? (
+                                <button className="add-prop" onClick={addProperty}>+ Add Property</button>
+                            ) : currentPath === '/landing/form' ? (
+                                <button className="add-prop" onClick={goBack}>Go Back</button>
+                            ) : null}
+
                         </div>
                     </header>
-                    {/* <Property basicInfo={basicInfo} /> */}
-                    <Home basicInfo={search==null?basicInfo:search} fetchData={fetchData}/>
+                    {currentPath === '/landing' ? (
+                        <Home basicInfo={search == null ? basicInfo : search} fetchData={fetchData} />
+                    ) : currentPath === '/landing/form' ? (
+                        <Form />
+                    ) : null}
                 </div>
-
-            </div>
-
-
+            </section>
         </div>
-
     )
 }
