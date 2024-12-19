@@ -6,7 +6,6 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 
 export const Navbar = () => {
-    const { userinfo, setUserInfo } = useContext(temp);
     let user = JSON.parse(localStorage.getItem("user"));
     const [display, setDisplay] = useState(false);
     const handleLogout = () => {

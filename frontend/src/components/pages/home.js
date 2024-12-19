@@ -61,7 +61,7 @@ export const Home = (props) => {
                                         {values.status}
                                     </button>
                                 </td>
-                                <td>{values.status == 'unsold' ? Math.floor(Math.random() * 100) : "00"}</td>
+                                <td>{values.status === 'unsold' ? Math.floor(Math.random() * 100) : "00"}</td>
                                 <td><img src="https://img.icons8.com/small/16/000000/visible.png" /><img src="https://img.icons8.com/small/16/000000/pencil-tip.png" /></td>
                             </tr>
                         )
