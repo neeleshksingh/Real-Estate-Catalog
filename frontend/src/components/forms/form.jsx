@@ -6,6 +6,7 @@ import { useState } from "react";
 import "../style/basic.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Environment } from "../../environment/env";
 
 const Form = () => {
   const navigate = useNavigate()
@@ -68,7 +69,8 @@ const Form = () => {
         alert("Please fill out all the required fields marked with * before submitting the form.");
         return;
       }
-      const response = await axios.post("url/basic", {
+      const url = Environment().API_URL;
+      const response = await axios.post(`${url}/basic`, {
         propertyType,
         mobile,
         ppd,
