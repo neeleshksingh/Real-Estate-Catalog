@@ -59,3 +59,71 @@ th {
 .table tbody tr {
     margin-top: 4%;
 }
+
+@media screen and (max-width: 768px) {
+    .property {
+        padding: 10px;
+    }
+
+    .table {
+        width: 100%;
+        font-size: 14px;
+        overflow-x: auto;
+        display: block;
+        border-collapse: collapse;
+    }
+
+    .table thead,
+    .table tbody {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .table td,
+    .table th {
+        padding: 5px 10px;
+        font-size: 14px;
+        white-space: nowrap;
+        text-align: left;
+    }
+
+    .status {
+        width: auto;
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .property {
+        padding: 5px;
+    }
+
+    .table {
+        font-size: 12px;
+        overflow-x: auto;
+        display: block;
+        border-collapse: collapse;
+    }
+
+    .table thead,
+    .table tbody {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .table td,
+    .table th {
+        padding: 3px 5px;
+        font-size: 12px;
+        white-space: nowrap;
+        text-align: left;
+    }
+
+    .status {
+        font-size: 12px;
+        padding: 3px 5px;
+    }
+}

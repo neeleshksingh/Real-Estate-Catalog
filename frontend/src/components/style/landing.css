@@ -94,3 +94,61 @@ button {
     background-color: #dc3545;
     color: white;
 }
+
+
+@media screen and (max-width: 768px) {
+    .landing {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .sidebar-section {
+        display: none;
+    }
+
+    .main-section {
+        grid-column: 1;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-container {
+        display: flex;
+        width: 90%;
+    }
+
+    .inp-ser {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .ser-btn {
+        width: 65px;
+        right: 55px;
+        bottom: 0;
+        font-size: 16px;
+    }
+
+    .add-prop {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .home-div {
+        padding: 5px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+}

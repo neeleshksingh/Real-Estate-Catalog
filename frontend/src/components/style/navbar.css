@@ -37,3 +37,71 @@
 .logout-btn {
     cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+    .nav {
+        padding: 0 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        height: auto;
+        font-size: 16px;
+    }
+
+    .username {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5em;
+        align-items: flex-start;
+    }
+
+    .user-name {
+        display: flex;
+        flex-direction: row;
+        gap: 4px;
+        align-items: center;
+    }
+
+    .hr {
+        width: 100%;
+        border: 1px solid #b9e9e3;
+    }
+
+    .logout-btn {
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav {
+        padding: 0 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        font-size: 14px;
+    }
+
+    .username {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5em;
+        align-items: flex-start;
+    }
+
+    .user-name {
+        display: flex;
+        flex-direction: row;
+        gap: 4px;
+        align-items: center;
+    }
+
+    .hr {
+        width: 100%;
+        border: 1px solid #b9e9e3;
+    }
+
+    .logout-btn {
+        cursor: pointer;
+    }
+}

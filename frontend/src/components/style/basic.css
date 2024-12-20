@@ -186,3 +186,113 @@ label {
     text-align: center;
     font-size: 1.2rem;
 }
+
+@media only screen and (max-width: 768px) {
+    .form {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .inp {
+        height: 50px;
+        font-size: 16px;
+    }
+
+    label {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .btn {
+        width: 100%;
+        font-size: 18px;
+        height: 50px;
+    }
+
+    .footer {
+        position: relative;
+        bottom: auto;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .cam {
+        width: 80px;
+        height: 80px;
+    }
+
+    .cam-logo,
+    .cam-logo-1 {
+        width: 30px;
+        height: 30px;
+    }
+
+    .font {
+        font-size: 16px;
+    }
+
+    .bar {
+        width: 100%;
+        height: 50px;
+    }
+
+    .li-bar {
+        font-size: 18px;
+        height: 40px;
+    }
+
+    .bar-head {
+        font-size: 20px;
+        margin-right: 50%;
+    }
+
+    .container .body {
+        width: 100%;
+        padding: 20px;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .inp {
+        font-size: 14px;
+    }
+
+    .cam {
+        width: 70px;
+        height: 70px;
+    }
+
+    .cam-logo,
+    .cam-logo-1 {
+        width: 25px;
+        height: 25px;
+    }
+
+    .footer {
+        gap: 10px;
+    }
+
+    .btn {
+        font-size: 16px;
+        height: 45px;
+    }
+
+    .bar {
+        height: 40px;
+    }
+
+    .li-bar {
+        font-size: 9px;
+    }
+
+    .container .body {
+        padding: 15px;
+        height: auto;
+    }
+
+    .bar-head {
+        font-size: 18px;
+        margin-right: 40%;
+    }
+}
