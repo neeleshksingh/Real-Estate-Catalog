@@ -1,6 +1,6 @@
 export function Environment() {
     return {
-        API_URL: 'https://real-estate-catalog-gp8x.onrender.com'
+        API_URL: 'https://real-estate-catalog-p12i.vercel.app'
     }
 }
 
